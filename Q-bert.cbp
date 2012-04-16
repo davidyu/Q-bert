@@ -13,7 +13,12 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
+					<Add directory="/home/accts/ly58/cs478/final/Spice/include" />
 				</Compiler>
+				<Linker>
+					<Add directory="/home/accts/ly58/local/lib" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/Q-bert" prefix_auto="1" extension_auto="1" />
@@ -29,8 +34,33 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-std=c++0x" />
 			<Add option="-Wall" />
+			<Add option="-pg" />
+			<Add option="-g" />
+			<Add directory="/home/accts/ly58/cs478/final/Spice/include" />
+			<Add directory="/home/accts/ly58/local/include" />
 		</Compiler>
+		<Linker>
+			<Add option="-pg" />
+			<Add option="-lSDL2main -lSDL2 -lGL" />
+			<Add option="-lGLU -lSDL_image" />
+			<Add directory="/home/accts/ly58/local/lib" />
+		</Linker>
+		<Unit filename="include/CORE_cQGame.hpp" />
+		<Unit filename="include/qbert_cPlayState.hpp" />
+		<Unit filename="src/CORE_cQGame.cpp" />
+		<Unit filename="src/qbert_cPlayState.cpp" />
+		<Unit filename="../Spice/main.cpp" />
+		<Unit filename="../Spice/src/CORE_cSDLState.cpp" />
+		<Unit filename="../Spice/src/CORE_cTimer.cpp" />
+		<Unit filename="../Spice/src/GFX_G2D_cSpriteBatch.cpp" />
+		<Unit filename="../Spice/src/GFX_G2D_cTextureRegion.cpp" />
+		<Unit filename="../Spice/src/GFX_cCameraBase.cpp" />
+		<Unit filename="../Spice/src/GFX_cImage.cpp" />
+		<Unit filename="../Spice/src/GFX_cTexture.cpp" />
+		<Unit filename="../Spice/src/MATH_Matrix4x4.cpp" />
+		<Unit filename="../Spice/src/STATE_cGameStateManager.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

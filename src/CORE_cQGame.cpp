@@ -70,7 +70,7 @@ bool cGame::Initialise()
 
     m_input.Initialise();
 
-    state_factory.RegisterClass("game", cPlayState::CreateInstance);
+    state_factory.RegisterClass("game", cPlayState::CreateInstance); //this is where we push instances of game states
     m_state_manager.PushState(state_factory.CreateObject("game"));
 
     return true;
@@ -138,5 +138,3 @@ cGameStateManager& cGame::GetStateManager()
 {
     return m_state_manager;
 }
-
-

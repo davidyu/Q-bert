@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="src/CORE_cQGame.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="1443" topLine="30" />
+	</File>
+	<File name="src/qbert_cPlayState.cpp" open="1" top="1" tabpos="2">
+		<Cursor position="2683" topLine="29" />
+	</File>
+	<File name="../Spice/main.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="190" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>

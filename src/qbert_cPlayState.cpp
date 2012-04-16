@@ -3,7 +3,13 @@
 #include "CORE_cGame.hpp"
 #include "GFX_cTexture.hpp"
 
+#define SHADED_CUBE
+
+/*temp*/ #include <iostream>
+         using namespace std;
+
 using namespace GFX;
+
 
 cPlayState::cPlayState() {}
 cPlayState::~cPlayState() {}
@@ -63,6 +69,8 @@ Rander()
     /* Do our drawing, too. */
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    glRotatef(1.0, 1.0, 1.0, 1.0);
 
     glBegin(GL_QUADS);
 
@@ -160,8 +168,8 @@ Rander()
 
     glEnd();
 
-    glMatrixMode(GL_MODELVIEW);
-    glRotatef(0.5, 1.0, 1.0, 1.0);
+    //glMatrixMode(GL_MODELVIEW);
+
 }
 
 
@@ -187,11 +195,10 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
 
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    //glLoadIdentity();
+    glLoadIdentity();
 
     RenderTexture(*p_tex);
     Rander();
-
 }
 
 void cPlayState::HandleInput() {}
