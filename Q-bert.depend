@@ -363,7 +363,7 @@
 1334422630 /home/accts/ly58/cs478/final/Spice/include/demo_cPlayState.hpp
 	"STATE_iGameState.hpp"
 
-1334628441 source:/home/accts/ly58/cs478/final/Spice/src/CORE_cSDLState.cpp
+1334629437 source:/home/accts/ly58/cs478/final/Spice/src/CORE_cSDLState.cpp
 	"CORE_cSDLState.hpp"
 
 1334601793 source:/home/accts/ly58/cs478/final/Spice/src/CORE_cTimer.cpp
@@ -464,12 +464,13 @@
 1334601833 /home/accts/ly58/cs478/final/Spice/include/GFX_cTextureMesh.hpp
 	<vector>
 
-1334628465 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQube.cpp
+1334630867 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQube.cpp
 	"ENTITY_cQube.hpp"
 	<vector>
 
-1334628474 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cQube.hpp
+1334630828 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cQube.hpp
 	<vector>
+	"Color.hpp"
 
 1334629341 source:/home/accts/ly58/cs478/final/Q-bert/main.cpp
 	<iostream>
@@ -504,4 +505,9 @@
 	"QBRT_cPlayState.hpp"
 	<cassert>
 	<stdlib.h>
+
+1334632057 source:/home/accts/ly58/cs478/final/Q-bert/src/Color.cpp
+	"Color.hpp"
+
+1334632041 /home/accts/ly58/cs478/final/Q-bert/include/Color.hpp
 
