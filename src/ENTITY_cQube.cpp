@@ -19,7 +19,7 @@ cQube::cQube(int x, int y, int z, int w, int d, int h, Color up, Color down, Col
 void cQube::render()
 {
     std::cout << "called" << std::endl;
-    cEntity::render();
+    //cEntity::render();
     glPushMatrix();
     glLoadIdentity();
     glTranslatef(_x, _y, _z);

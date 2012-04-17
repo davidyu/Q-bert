@@ -57,8 +57,8 @@ void cPlayState::loadLevel()
         {
             if(pyramid[j*w + i])
             {
-                cQube q(i*cube_width, 0, j*cube_height, cube_width, cube_depth, cube_height, up, rest);
-                entities.push_back(&q);
+                cQube* q = new cQube(i*cube_width, 0, j*cube_height, cube_width, cube_depth, cube_height, up, rest);
+                entities.push_back(q);
             }
         }
     }
