@@ -48,8 +48,10 @@
 			<Add directory="/home/accts/ly58/local/lib" />
 		</Linker>
 		<Unit filename="include/CORE_cQGame.hpp" />
+		<Unit filename="include/ENTITY_cQube.hpp" />
 		<Unit filename="include/qbert_cPlayState.hpp" />
 		<Unit filename="src/CORE_cQGame.cpp" />
+		<Unit filename="src/ENTITY_cQube.cpp" />
 		<Unit filename="src/qbert_cPlayState.cpp" />
 		<Unit filename="../Spice/main.cpp" />
 		<Unit filename="../Spice/src/CORE_cSDLState.cpp" />
@@ -59,6 +61,7 @@
 		<Unit filename="../Spice/src/GFX_cCameraBase.cpp" />
 		<Unit filename="../Spice/src/GFX_cImage.cpp" />
 		<Unit filename="../Spice/src/GFX_cTexture.cpp" />
+		<Unit filename="../Spice/src/GFX_cTextureMesh.cpp" />
 		<Unit filename="../Spice/src/MATH_Matrix4x4.cpp" />
 		<Unit filename="../Spice/src/STATE_cGameStateManager.cpp" />
 		<Extensions>
