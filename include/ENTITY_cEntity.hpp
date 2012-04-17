@@ -8,7 +8,7 @@ namespace ENTITY
         public:
             cEntity();
             virtual ~cEntity();
-            virtual void render();
+            virtual void render() = 0;
 
     };
 }

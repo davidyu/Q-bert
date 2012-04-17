@@ -19,7 +19,7 @@
 
 1334422630 /home/accts/ly58/cs478/final/Spice/include/CORE_iApplication.hpp
 
-1334628609 /home/accts/ly58/cs478/final/Spice/include/CORE_cSDLState.hpp
+1334637632 /home/accts/ly58/cs478/final/Spice/include/CORE_cSDLState.hpp
 	<SDL2/SDL.h>
 
 1334433724 /home/accts/ly58/cs478/final/Spice/include/CORE_Input.hpp
@@ -363,7 +363,7 @@
 1334422630 /home/accts/ly58/cs478/final/Spice/include/demo_cPlayState.hpp
 	"STATE_iGameState.hpp"
 
-1334629437 source:/home/accts/ly58/cs478/final/Spice/src/CORE_cSDLState.cpp
+1334637380 source:/home/accts/ly58/cs478/final/Spice/src/CORE_cSDLState.cpp
 	"CORE_cSDLState.hpp"
 
 1334601793 source:/home/accts/ly58/cs478/final/Spice/src/CORE_cTimer.cpp
@@ -464,13 +464,16 @@
 1334601833 /home/accts/ly58/cs478/final/Spice/include/GFX_cTextureMesh.hpp
 	<vector>
 
-1334630867 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQube.cpp
+1334642555 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQube.cpp
 	"ENTITY_cQube.hpp"
 	<vector>
+	<iostream>
 
-1334630828 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cQube.hpp
+1334642484 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cQube.hpp
 	<vector>
+	<SDL2/SDL_opengl.h>
 	"Color.hpp"
+	"ENTITY_cEntity.hpp"
 
 1334629341 source:/home/accts/ly58/cs478/final/Q-bert/main.cpp
 	<iostream>
@@ -488,14 +491,16 @@
 	"STATE_cGameStateManager.hpp"
 	"cGenericFactory.hpp"
 
-1334629302 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
+1334642613 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
 	<SDL2/SDL_opengl.h>
 	"QBRT_cPlayState.hpp"
 	"QCORE_cQGame.hpp"
 	"GFX_cTexture.hpp"
 
-1334452870 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cPlayState.hpp
+1334642840 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cPlayState.hpp
+	<vector>
 	"STATE_iGameState.hpp"
+	"ENTITY_cQube.hpp"
 
 1334629390 source:/home/accts/ly58/cs478/final/Q-bert/src/QCORE_cQGame.cpp
 	<SDL2/SDL_opengl.h>
@@ -510,4 +515,9 @@
 	"Color.hpp"
 
 1334632041 /home/accts/ly58/cs478/final/Q-bert/include/Color.hpp
+
+1334642265 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cEntity.cpp
+	"ENTITY_cEntity.hpp"
+
+1334642625 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cEntity.hpp
 

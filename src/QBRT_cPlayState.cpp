@@ -29,7 +29,41 @@ bool cPlayState::OnEnter()
 {
     p_tex = new cTexture("test.png");
     p_tex->RegisterGL();
+
+    loadLevel();
 }
+
+void cPlayState::loadLevel()
+{
+    //temporary
+    bool pyramid[25] = {1,1,1,1,1,
+                      0,1,1,1,1,
+                      0,0,1,1,1,
+                      0,0,0,1,1,
+                      0,0,0,0,1};
+
+    int w = 5, h = 5;
+
+    int cube_width = 2, cube_height = 2, cube_depth = 2;
+
+    Color up(1.0f, 0.0f, 0.0f, 1.0f);
+    Color rest(1.0f, 1.0f, 1.0f, 1.0f);
+
+    using std::vector; //need this!!!!!
+    using ENTITY::cQube;
+    for (int j = 0; j < h; j++)
+    {
+        for (int i = 0; i < w; i++)
+        {
+            if(pyramid[j*w + i])
+            {
+                cQube q(i*cube_width, 0, j*cube_height, cube_width, cube_depth, cube_height, up, rest);
+                entities.push_back(&q);
+            }
+        }
+    }
+}
+
 bool cPlayState::OnExit()
 {
     delete p_tex;
@@ -45,134 +79,12 @@ void cPlayState::Update(CORE::cGame* game, float delta)
 static void
 Rander()
 {
-    static float color[8][3] = {
-        {1.0, 1.0, 0.0},
-        {1.0, 0.0, 0.0},
-        {0.0, 0.0, 0.0},
-        {0.0, 1.0, 0.0},
-        {0.0, 1.0, 1.0},
-        {1.0, 1.0, 1.0},
-        {1.0, 0.0, 1.0},
-        {0.0, 0.0, 1.0}
-    };
-    static float cube[8][3] = {
-        {0.5, 0.5, -0.5},
-        {0.5, -0.5, -0.5},
-        {-0.5, -0.5, -0.5},
-        {-0.5, 0.5, -0.5},
-        {-0.5, 0.5, 0.5},
-        {0.5, 0.5, 0.5},
-        {0.5, -0.5, 0.5},
-        {-0.5, -0.5, 0.5}
-    };
-
-    /* Do our drawing, too. */
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
     glRotatef(1.0, 1.0, 1.0, 1.0);
-
-    glBegin(GL_QUADS);
-
-#ifdef SHADED_CUBE
-    glColor3fv(color[0]);
-    glVertex3fv(cube[0]);
-    glColor3fv(color[1]);
-    glVertex3fv(cube[1]);
-    glColor3fv(color[2]);
-    glVertex3fv(cube[2]);
-    glColor3fv(color[3]);
-    glVertex3fv(cube[3]);
-
-    glColor3fv(color[3]);
-    glVertex3fv(cube[3]);
-    glColor3fv(color[4]);
-    glVertex3fv(cube[4]);
-    glColor3fv(color[7]);
-    glVertex3fv(cube[7]);
-    glColor3fv(color[2]);
-    glVertex3fv(cube[2]);
-
-    glColor3fv(color[0]);
-    glVertex3fv(cube[0]);
-    glColor3fv(color[5]);
-    glVertex3fv(cube[5]);
-    glColor3fv(color[6]);
-    glVertex3fv(cube[6]);
-    glColor3fv(color[1]);
-    glVertex3fv(cube[1]);
-
-    glColor3fv(color[5]);
-    glVertex3fv(cube[5]);
-    glColor3fv(color[4]);
-    glVertex3fv(cube[4]);
-    glColor3fv(color[7]);
-    glVertex3fv(cube[7]);
-    glColor3fv(color[6]);
-    glVertex3fv(cube[6]);
-
-    glColor3fv(color[5]);
-    glVertex3fv(cube[5]);
-    glColor3fv(color[0]);
-    glVertex3fv(cube[0]);
-    glColor3fv(color[3]);
-    glVertex3fv(cube[3]);
-    glColor3fv(color[4]);
-    glVertex3fv(cube[4]);
-
-    glColor3fv(color[6]);
-    glVertex3fv(cube[6]);
-    glColor3fv(color[1]);
-    glVertex3fv(cube[1]);
-    glColor3fv(color[2]);
-    glVertex3fv(cube[2]);
-    glColor3fv(color[7]);
-    glVertex3fv(cube[7]);
-#else /* flat cube */
-    glColor3f(1.0, 0.0, 0.0);
-    glVertex3fv(cube[0]);
-    glVertex3fv(cube[1]);
-    glVertex3fv(cube[2]);
-    glVertex3fv(cube[3]);
-
-    glColor3f(0.0, 1.0, 0.0);
-    glVertex3fv(cube[3]);
-    glVertex3fv(cube[4]);
-    glVertex3fv(cube[7]);
-    glVertex3fv(cube[2]);
-
-    glColor3f(0.0, 0.0, 1.0);
-    glVertex3fv(cube[0]);
-    glVertex3fv(cube[5]);
-    glVertex3fv(cube[6]);
-    glVertex3fv(cube[1]);
-
-    glColor3f(0.0, 1.0, 1.0);
-    glVertex3fv(cube[5]);
-    glVertex3fv(cube[4]);
-    glVertex3fv(cube[7]);
-    glVertex3fv(cube[6]);
-
-    glColor3f(1.0, 1.0, 0.0);
-    glVertex3fv(cube[5]);
-    glVertex3fv(cube[0]);
-    glVertex3fv(cube[3]);
-    glVertex3fv(cube[4]);
-
-    glColor3f(1.0, 0.0, 1.0);
-    glVertex3fv(cube[6]);
-    glVertex3fv(cube[1]);
-    glVertex3fv(cube[2]);
-    glVertex3fv(cube[7]);
-#endif /* SHADED_CUBE */
-
-    glEnd();
-
-    //glMatrixMode(GL_MODELVIEW);
-
 }
 
-
+//this takes the picture and plasters it
 void RenderTexture(const cTexture& tex)
 {
     glBindTexture(GL_TEXTURE_2D, tex.GetID());               // Select Our Texture
@@ -197,8 +109,18 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
 
-    RenderTexture(*p_tex);
-    Rander();
+    //RenderTexture(*p_tex);
+
+
+    using std::vector;
+    using ENTITY::cEntity;
+    for(vector<cEntity*>::iterator it = entities.begin(); it != entities.end(); ++it)
+    {
+        cEntity* e = *it;
+        e->render();
+    }
+
+    //Rander();
 }
 
 void cPlayState::HandleInput() {}

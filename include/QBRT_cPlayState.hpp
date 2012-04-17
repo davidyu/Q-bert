@@ -1,7 +1,9 @@
 #ifndef DEMO_CPLAYSTATE_H
 #define DEMO_CPLAYSTATE_H
 
+#include <vector>
 #include "STATE_iGameState.hpp"
+#include "ENTITY_cQube.hpp"
 //
 /*temp*/#include <iostream>
 
@@ -12,6 +14,8 @@ namespace CORE
 }
 
 //static STATE::iGameState* CreateInstance() {}
+
+using std::vector;
 
 class cPlayState : public STATE::iGameState
 {
@@ -33,6 +37,10 @@ class cPlayState : public STATE::iGameState
 
         void HandleInput();
     private:
+        vector<ENTITY::cEntity*> entities;
+        void loadLevel();
+    protected:
+
 };
 
 #endif // DEMO_CPLAYSTATE_H
