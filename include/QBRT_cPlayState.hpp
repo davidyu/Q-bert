@@ -40,8 +40,10 @@ class cPlayState : public STATE::iGameState
         void Render(CORE::cGame* game, float percent_tick);
 
         void HandleInput();
+
+        ENTITY::cQube* GetQubeAt(int i, int j);
     private:
-        map<pair<int, int>, vector<ENTITY::cQube*>> qubes;
+        map<pair<int, int>, vector<ENTITY::cQube*>*> qubes;
         vector<ENTITY::cEntity*> entities;
         void loadLevel();
     protected:

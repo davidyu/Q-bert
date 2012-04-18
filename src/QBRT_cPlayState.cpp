@@ -61,6 +61,8 @@ void cPlayState::loadLevel()
     Color rest(0.3f, 0.3f, 0.3f, 1.0f);
 
     using std::vector; //need this!!!!!
+    using std::map;
+    using std::pair;
     using ENTITY::cQube;
     for (int j = 0; j < h; j++)
     {
@@ -68,19 +70,35 @@ void cPlayState::loadLevel()
         {
             if(pyramid[j*w + i] >= 1)
             {
-
+                vector<cQube*>* qubesHere = new vector<cQube*>();
                 for (int k = 0; k < pyramid[j*w + i]; k++)
                 {
                     cQube* q = new cQube(i*cube_width, k*cube_height, j*cube_height, cube_width, cube_depth, cube_height,
                                          up, down, left, right, front, back);
                     entities.push_back(q);
+                    qubesHere->push_back(q);
                 }
+                qubes.insert(make_pair(make_pair(i,j), qubesHere));
             }
         }
     }
 
     camera_x = 0; camera_y = 7 * cube_height; camera_z = 6 * cube_depth;
 
+}
+
+ENTITY::cQube* cPlayState::GetQubeAt(int i, int j)
+{
+    using std::vector; //need this!!!!!
+    using std::map;
+    using std::pair;
+    using ENTITY::cQube;
+    vector<cQube*> v = *(*qubes.find(make_pair(i,j))).second;
+
+    if (!v.empty())
+        return v.back();
+    else
+        return 0;
 }
 
 bool cPlayState::OnExit()
