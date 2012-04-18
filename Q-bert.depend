@@ -493,7 +493,7 @@
 	"STATE_cGameStateManager.hpp"
 	"cGenericFactory.hpp"
 
-1334734871 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
+1334736669 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
 	<SDL2/SDL_opengl.h>
 	"QBRT_cPlayState.hpp"
 	"QCORE_cQGame.hpp"
@@ -531,9 +531,10 @@
 1334722351 /home/accts/ly58/cs478/final/Spice/include/GFX_cTextureWrapper.hpp
 	<SDL2/SDL_opengl.h>
 
-1334734303 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQubert.cpp
+1334736535 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQubert.cpp
 	"ENTITY_cQubert.hpp"
 	<iostream>
+	<cmath>
 
 1334734537 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cQubert.hpp
 	<SDL2/SDL_opengl.h>

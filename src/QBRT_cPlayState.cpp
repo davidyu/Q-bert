@@ -90,8 +90,9 @@ void cPlayState::loadLevel()
 
 void cPlayState::addQubert()
 {
-    Color qc(0.5f, 0.5f, 0.0f, 1.0f);
+    Color qc(1.0f,0.5f,0.0f, 1.0f);
     _qubert = new ENTITY::cQubert(this, qc);
+    entities.push_back(_qubert);
 }
 
 ENTITY::cQube* cPlayState::GetQubeAt(int i, int j)
@@ -166,7 +167,6 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
     }
 
    //start with camera
-
     GLfloat xtrans = -camera_x;
     GLfloat ytrans = -camera_y;
     GLfloat ztrans = -camera_z;
