@@ -400,7 +400,7 @@
 
 1334422630 /home/accts/ly58/cs478/final/Spice/include/MATH_Vec2.hpp
 
-1334422630 /home/accts/ly58/cs478/final/Spice/include/MATH_Matrix4x4.hpp
+1334713170 /home/accts/ly58/cs478/final/Spice/include/MATH_Matrix4x4.hpp
 	"MATH_MathHelper.hpp"
 
 1334433700 source:/home/accts/ly58/cs478/final/Spice/src/GFX_cImage.cpp
@@ -464,12 +464,12 @@
 1334601833 /home/accts/ly58/cs478/final/Spice/include/GFX_cTextureMesh.hpp
 	<vector>
 
-1334642950 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQube.cpp
+1334720877 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQube.cpp
 	"ENTITY_cQube.hpp"
 	<vector>
 	<iostream>
 
-1334642484 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cQube.hpp
+1334720548 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cQube.hpp
 	<vector>
 	<SDL2/SDL_opengl.h>
 	"Color.hpp"
@@ -491,7 +491,7 @@
 	"STATE_cGameStateManager.hpp"
 	"cGenericFactory.hpp"
 
-1334642855 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
+1334720986 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
 	<SDL2/SDL_opengl.h>
 	"QBRT_cPlayState.hpp"
 	"QCORE_cQGame.hpp"
@@ -502,7 +502,7 @@
 	"STATE_iGameState.hpp"
 	"ENTITY_cQube.hpp"
 
-1334629390 source:/home/accts/ly58/cs478/final/Q-bert/src/QCORE_cQGame.cpp
+1334720963 source:/home/accts/ly58/cs478/final/Q-bert/src/QCORE_cQGame.cpp
 	<SDL2/SDL_opengl.h>
 	<SDL2/SDL_image.h>
 	"QCORE_cQGame.hpp"
@@ -516,8 +516,10 @@
 
 1334632041 /home/accts/ly58/cs478/final/Q-bert/include/Color.hpp
 
-1334642265 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cEntity.cpp
+1334716537 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cEntity.cpp
 	"ENTITY_cEntity.hpp"
 
 1334642625 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cEntity.hpp
+
+1334714718 source:/home/accts/ly58/cs478/final/Q-bert/src/GFX_cCamera.cpp
 

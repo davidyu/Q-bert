@@ -10,6 +10,8 @@
 
 using namespace GFX;
 
+float camera_x, camera_y, camera_z;
+float rot_x, rot_y, rot_z;
 
 cPlayState::cPlayState() {}
 cPlayState::~cPlayState() {}
@@ -36,18 +38,19 @@ bool cPlayState::OnEnter()
 void cPlayState::loadLevel()
 {
     //temporary
+
     bool pyramid[25] = {1,1,1,1,1,
-                      0,1,1,1,1,
-                      0,0,1,1,1,
-                      0,0,0,1,1,
-                      0,0,0,0,1};
+                        0,1,1,1,1,
+                        0,0,1,1,1,
+                        0,0,0,1,1,
+                        0,0,0,0,1};
 
     int w = 5, h = 5;
 
-    int cube_width = 2, cube_height = 2, cube_depth = 2;
+    float cube_width = 0.5, cube_height = 0.5, cube_depth = 0.5;
 
     Color up(1.0f, 0.0f, 0.0f, 1.0f);
-    Color rest(1.0f, 1.0f, 1.0f, 1.0f);
+    Color rest(0.3f, 0.3f, 0.3f, 1.0f);
 
     using std::vector; //need this!!!!!
     using ENTITY::cQube;
@@ -55,13 +58,16 @@ void cPlayState::loadLevel()
     {
         for (int i = 0; i < w; i++)
         {
-            if(pyramid[j*w + i])
+            if(pyramid[j*w + i] == 1)
             {
                 cQube* q = new cQube(i*cube_width, 0, j*cube_height, cube_width, cube_depth, cube_height, up, rest);
                 entities.push_back(q);
             }
         }
     }
+
+    camera_x = 0; camera_y = cube_height * 2; camera_z = 5 * cube_depth;
+
 }
 
 bool cPlayState::OnExit()
@@ -107,10 +113,6 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
 
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glLoadIdentity();
-
-    //RenderTexture(*p_tex);
-
 
     using std::vector;
     using ENTITY::cEntity;
@@ -119,6 +121,25 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
         cEntity* e = *it;
         e->render();
     }
+
+   //start with camera
+
+    GLfloat xtrans = -camera_x;
+    GLfloat ytrans = -camera_y;
+    GLfloat ztrans = -camera_z;
+
+    GLfloat xrot = 360 - rot_x;
+    GLfloat yrot = 360 - rot_y;
+    GLfloat zrot = 360 - rot_z;
+
+    //iso
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    //glRotatef(0.1, 1.0, 1.0, 1.0);
+    glRotatef(30.0, 1,0,0);
+    glRotatef(-45.0, 0,1,0);
+
+    glTranslatef(xtrans, ytrans, .0f);
 
     //Rander();
 }

@@ -47,13 +47,18 @@
 			<Add option="-lGLU -lSDL_image" />
 			<Add directory="/home/accts/ly58/local/lib" />
 		</Linker>
-		<Unit filename="include/CORE_cQGame.hpp" />
+		<Unit filename="include/Color.hpp" />
+		<Unit filename="include/ENTITY_cEntity.cpp" />
+		<Unit filename="include/ENTITY_cEntity.hpp" />
 		<Unit filename="include/ENTITY_cQube.hpp" />
-		<Unit filename="include/qbert_cPlayState.hpp" />
-		<Unit filename="src/CORE_cQGame.cpp" />
+		<Unit filename="include/QBRT_cPlayState.hpp" />
+		<Unit filename="include/QCORE_cQGame.hpp" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/Color.cpp" />
+		<Unit filename="src/ENTITY_cEntity.cpp" />
 		<Unit filename="src/ENTITY_cQube.cpp" />
-		<Unit filename="src/qbert_cPlayState.cpp" />
-		<Unit filename="../Spice/main.cpp" />
+		<Unit filename="src/QBRT_cPlayState.cpp" />
+		<Unit filename="src/QCORE_cQGame.cpp" />
 		<Unit filename="../Spice/src/CORE_cSDLState.cpp" />
 		<Unit filename="../Spice/src/CORE_cTimer.cpp" />
 		<Unit filename="../Spice/src/GFX_G2D_cSpriteBatch.cpp" />

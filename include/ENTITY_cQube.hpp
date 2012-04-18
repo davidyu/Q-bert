@@ -11,18 +11,18 @@ namespace ENTITY
     class cQube: public cEntity
     {
         public:
-            cQube(int x, int y, int z, int w, int d, int h, Color up, Color rest);
-            cQube(int x, int y, int z, int w, int d, int h, Color up, Color down, Color left, Color right, Color front, Color back);
+            cQube(float x, float y, float z, float w, float d, float h, Color up, Color rest);
+            cQube(float x, float y, float z, float w, float d, float h, Color up, Color down, Color left, Color right, Color front, Color back);
 
             virtual void render();
 
         protected:
 
-        int _x,
+        float _x,
             _y,
             _z;
 
-        int _width,
+        float _width,
             _depth,
             _height;
 
