@@ -5,14 +5,17 @@
 #include "Color.hpp"
 #include "ENTITY_cEntity.hpp"
 #include "ENTITY_cQube.hpp"
+#include "QBRT_cPlayState.hpp"
+
+class cPlayState;
 
 namespace ENTITY
 {
     class cQubert: public cEntity
     {
         public:
-            cQubert(Color c);
-            cQubert(cQube* q, Color c);
+            cQubert(cPlayState* ps, Color c); //make playstate singleton?
+            cQubert(cPlayState* ps, cQube* q, Color c);
 
             virtual void render(float percent_tick);
             virtual void update(CORE::cGame* game, float delta);
@@ -22,9 +25,11 @@ namespace ENTITY
                   _y,
                   _z;
 
-            cQube* _qube; //which qube am I standing on?
+            cQube*      _qube; //which qube am I standing on?
+            cPlayState* _playState;
 
             Color  _color;
+
     };
 }
 

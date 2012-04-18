@@ -6,6 +6,7 @@
 #include <utility>
 #include "STATE_iGameState.hpp"
 #include "ENTITY_cQube.hpp"
+#include "ENTITY_cQubert.hpp"
 //
 /*temp*/#include <iostream>
 
@@ -13,6 +14,11 @@ namespace CORE
 {
     class cGame;
     class Input;
+}
+
+namespace ENTITY
+{
+    class cQubert; //why do I have to do this?
 }
 
 //static STATE::iGameState* CreateInstance() {}
@@ -45,7 +51,9 @@ class cPlayState : public STATE::iGameState
     private:
         map<pair<int, int>, vector<ENTITY::cQube*>*> qubes;
         vector<ENTITY::cEntity*> entities;
+        ENTITY::cQubert * _qubert;
         void loadLevel();
+        void addQubert();
     protected:
 
 };

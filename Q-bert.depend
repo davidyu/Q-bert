@@ -493,18 +493,19 @@
 	"STATE_cGameStateManager.hpp"
 	"cGenericFactory.hpp"
 
-1334726563 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
+1334734871 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
 	<SDL2/SDL_opengl.h>
 	"QBRT_cPlayState.hpp"
 	"QCORE_cQGame.hpp"
 	"GFX_cTexture.hpp"
 
-1334733197 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cPlayState.hpp
+1334734441 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cPlayState.hpp
 	<vector>
 	<map>
 	<utility>
 	"STATE_iGameState.hpp"
 	"ENTITY_cQube.hpp"
+	"ENTITY_cQubert.hpp"
 
 1334722549 source:/home/accts/ly58/cs478/final/Q-bert/src/QCORE_cQGame.cpp
 	<SDL2/SDL_opengl.h>
@@ -530,13 +531,14 @@
 1334722351 /home/accts/ly58/cs478/final/Spice/include/GFX_cTextureWrapper.hpp
 	<SDL2/SDL_opengl.h>
 
-1334732004 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQubert.cpp
+1334734303 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQubert.cpp
 	"ENTITY_cQubert.hpp"
 	<iostream>
 
-1334731998 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cQubert.hpp
+1334734537 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cQubert.hpp
 	<SDL2/SDL_opengl.h>
 	"Color.hpp"
 	"ENTITY_cEntity.hpp"
 	"ENTITY_cQube.hpp"
+	"QBRT_cPlayState.hpp"
 

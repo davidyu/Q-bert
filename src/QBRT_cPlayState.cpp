@@ -33,6 +33,7 @@ bool cPlayState::OnEnter()
     p_tex->RegisterGL();
 
     loadLevel();
+    addQubert();
 }
 
 void cPlayState::loadLevel()
@@ -78,13 +79,19 @@ void cPlayState::loadLevel()
                     entities.push_back(q);
                     qubesHere->push_back(q);
                 }
-                qubes.insert(make_pair(make_pair(i,j), qubesHere));
+                qubes.insert(make_pair(make_pair(j,i), qubesHere));
             }
         }
     }
 
     camera_x = 0; camera_y = 7 * cube_height; camera_z = 6 * cube_depth;
 
+}
+
+void cPlayState::addQubert()
+{
+    Color qc(0.5f, 0.5f, 0.0f, 1.0f);
+    _qubert = new ENTITY::cQubert(this, qc);
 }
 
 ENTITY::cQube* cPlayState::GetQubeAt(int i, int j)
