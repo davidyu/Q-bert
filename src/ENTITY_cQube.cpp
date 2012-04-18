@@ -8,20 +8,25 @@
 using namespace ENTITY;
 
 cQube::cQube(float x, float y, float z, float w, float d, float h, int i, int j, int k,
-             Color up, Color rest)
+             Color up, Color activated, Color rest)
       :_x(x), _y(y), _z(z), _width(w), _depth(d), _height(h), _i(i), _j(j), _k(k),
-       _up(up), _down(rest), _left(rest), _right(rest), _front(rest), _back(rest)
+       _up(up), _activated(activated), _down(rest), _left(rest), _right(rest), _front(rest), _back(rest)
 {
 }
 
 cQube::cQube(float x, float y, float z, float w, float d, float h, int i, int j, int k,
-             Color up, Color down, Color left, Color right, Color front, Color back)
+             Color up, Color activated, Color down, Color left, Color right, Color front, Color back)
       :_x(x), _y(y), _z(z), _width(w), _depth(d), _height(h), _i(i), _j(j), _k(k),
-      _up(up), _down(down), _left(left), _right(right), _front(front), _back(back)
+      _up(up), _activated(activated), _down(down), _left(left), _right(right), _front(front), _back(back)
 {
 }
 
 void cQube::update(CORE::cGame* game, float delta) {}
+
+void cQube::activate()
+{
+    _up = _activated;
+}
 
 void cQube::render(float percent_tick)
 {

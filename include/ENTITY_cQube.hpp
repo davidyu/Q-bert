@@ -12,9 +12,9 @@ namespace ENTITY
     {
         public:
             cQube(float x, float y, float z, float w, float d, float h, int i, int j, int k,
-                  Color up, Color rest);
+                  Color up, Color activated, Color rest);
             cQube(float x, float y, float z, float w, float d, float h, int i, int j, int k,
-                  Color up, Color down, Color left, Color right, Color front, Color back);
+                  Color up, Color activated, Color down, Color left, Color right, Color front, Color back);
 
             virtual void render(float percent_tick);
             virtual void update(CORE::cGame* game, float delta);
@@ -26,6 +26,8 @@ namespace ENTITY
             int   getI() { return _i; };
             int   getJ() { return _j; };
             int   getK() { return _k; };
+
+            void activate();
 
         protected:
 
@@ -42,6 +44,7 @@ namespace ENTITY
               _height;
 
         Color _up,
+              _activated,
               _down,
               _left,
               _right,

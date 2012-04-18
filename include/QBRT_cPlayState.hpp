@@ -48,12 +48,16 @@ class cPlayState : public STATE::iGameState
         void HandleInput();
 
         ENTITY::cQube* GetQubeAt(int i, int j);
+        ENTITY::cQube* GetDefaultQube() { return _defaultQube; };
+
     private:
         map<pair<int, int>, vector<ENTITY::cQube*>*> qubes;
         vector<ENTITY::cEntity*> entities;
         ENTITY::cQubert * _qubert;
+        ENTITY::cQube*    _defaultQube;
         void loadLevel();
         void addQubert();
+
     protected:
 
 };

@@ -22,6 +22,7 @@ cQubert::cQubert(cPlayState* ps, Color c)
     _x = _qube->getX();
     _y = _qube->getY();
     _z = _qube->getZ();
+    _qube->activate();
 }
 
 cQubert::cQubert(cPlayState* ps, cQube* q, Color c)
@@ -30,6 +31,7 @@ cQubert::cQubert(cPlayState* ps, cQube* q, Color c)
     _x = _qube->getX();
     _y = _qube->getY();
     _z = _qube->getZ();
+    _qube->activate();
 }
 
 void cQubert::move(int i, int k)
@@ -37,9 +39,15 @@ void cQubert::move(int i, int k)
     cout << _qube->getI() + i << ", " << _qube->getK() + k << endl;
 
     _qube = _playState->GetQubeAt(_qube->getI() + i, _qube->getK() + k);
+
+    if (_qube == 0) //death!
+        _qube = _playState->GetDefaultQube();
+
     _x = _qube->getX();
     _y = _qube->getY();
     _z = _qube->getZ();
+
+    _qube->activate();
 }
 
 void cQubert::update(CORE::cGame* game, float delta)

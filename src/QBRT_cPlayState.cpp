@@ -54,6 +54,7 @@ void cPlayState::loadLevel()
           cube_depth  = 15;
 
     Color up(1.0f, 0, 0, 1.0f);
+    Color activated(0.5f, 0.5f, 0, 1.0f);
     Color down(0, 1.0f, 0, 1.0f);
     Color left(0.3f, 0.3f, 0.3f, 1.0f);
     Color right(0, 1.0f, 1.0f, 1.0f);
@@ -75,7 +76,7 @@ void cPlayState::loadLevel()
                 for (int k = 0; k < pyramid[j*w + i]; k++)
                 {
                     cQube* q = new cQube(i*cube_width, k*cube_height, j*cube_height, cube_width, cube_depth, cube_height, j, k, i,
-                                         up, down, left, right, front, back);
+                                         up, activated, down, left, right, front, back);
                     entities.push_back(q);
                     qubesHere->push_back(q);
                 }
@@ -85,6 +86,7 @@ void cPlayState::loadLevel()
     }
 
     camera_x = 0; camera_y = 7 * cube_height; camera_z = 6 * cube_depth;
+    _defaultQube = GetQubeAt(0, 6);
 
 }
 
