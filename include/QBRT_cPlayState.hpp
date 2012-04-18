@@ -1,5 +1,5 @@
-#ifndef DEMO_CPLAYSTATE_H
-#define DEMO_CPLAYSTATE_H
+#ifndef QBRT_CPLAYSTATE_H
+#define QBRT_CPLAYSTATE_H
 
 #include <vector>
 #include <map>
@@ -18,7 +18,7 @@ namespace CORE
 
 namespace ENTITY
 {
-    class cQubert; //why do I have to do this?
+    class cQubert; //why do I have to do this? cQube doesn't need this...
 }
 
 //static STATE::iGameState* CreateInstance() {}
@@ -58,4 +58,4 @@ class cPlayState : public STATE::iGameState
 
 };
 
-#endif // DEMO_CPLAYSTATE_H
+#endif // QBRT_CPLAYSTATE_H

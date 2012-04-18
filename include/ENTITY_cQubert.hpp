@@ -20,6 +20,8 @@ namespace ENTITY
             virtual void render(float percent_tick);
             virtual void update(CORE::cGame* game, float delta);
 
+            void move(int i, int k);
+
         private:
             float _x,   //will be used for animation
                   _y,
@@ -33,4 +35,4 @@ namespace ENTITY
     };
 }
 
-#endif CQUBERT_H
+#endif // CQUBERT_H

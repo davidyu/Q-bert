@@ -11,8 +11,10 @@ namespace ENTITY
     class cQube: public cEntity
     {
         public:
-            cQube(float x, float y, float z, float w, float d, float h, Color up, Color rest);
-            cQube(float x, float y, float z, float w, float d, float h, Color up, Color down, Color left, Color right, Color front, Color back);
+            cQube(float x, float y, float z, float w, float d, float h, int i, int j, int k,
+                  Color up, Color rest);
+            cQube(float x, float y, float z, float w, float d, float h, int i, int j, int k,
+                  Color up, Color down, Color left, Color right, Color front, Color back);
 
             virtual void render(float percent_tick);
             virtual void update(CORE::cGame* game, float delta);
@@ -21,11 +23,19 @@ namespace ENTITY
             float getY() { return _y; };
             float getZ() { return _z; };
 
+            int   getI() { return _i; };
+            int   getJ() { return _j; };
+            int   getK() { return _k; };
+
         protected:
 
         float _x,
               _y,
               _z;
+
+        int   _i, //indices in map - corresponds to x
+              _j, // corresponds to z
+              _k; // corresponds to y
 
         float _width,
               _depth,
@@ -40,4 +50,4 @@ namespace ENTITY
     };
 }
 
-#endif CQUBE_H
+#endif // CQUBE_H

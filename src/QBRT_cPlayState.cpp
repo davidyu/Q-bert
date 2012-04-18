@@ -74,7 +74,7 @@ void cPlayState::loadLevel()
                 vector<cQube*>* qubesHere = new vector<cQube*>();
                 for (int k = 0; k < pyramid[j*w + i]; k++)
                 {
-                    cQube* q = new cQube(i*cube_width, k*cube_height, j*cube_height, cube_width, cube_depth, cube_height,
+                    cQube* q = new cQube(i*cube_width, k*cube_height, j*cube_height, cube_width, cube_depth, cube_height, j, k, i,
                                          up, down, left, right, front, back);
                     entities.push_back(q);
                     qubesHere->push_back(q);
@@ -91,7 +91,7 @@ void cPlayState::loadLevel()
 void cPlayState::addQubert()
 {
     Color qc(1.0f,0.5f,0.0f, 1.0f);
-    _qubert = new ENTITY::cQubert(this, qc);
+    _qubert = new ENTITY::cQubert(this, GetQubeAt(0,6), qc);
     entities.push_back(_qubert);
 }
 
@@ -122,6 +122,15 @@ void cPlayState::Update(CORE::cGame* game, float delta)
     //cout << delta << endl;
     if (game->GetInput().GetKeyState(HAR_ESCAPE))
         game->EndGame();
+
+    if (game->GetInput().OnKeyDown(HAR_LEFT))
+        _qubert->move(-1,0);
+    else if (game->GetInput().OnKeyDown(HAR_DOWN))
+        _qubert->move(0,-1);
+    else if (game->GetInput().OnKeyDown(HAR_RIGHT))
+        _qubert->move(1,0);
+    else if (game->GetInput().OnKeyDown(HAR_UP))
+        _qubert->move(0,1);
 
     //update all entities
     using std::vector;

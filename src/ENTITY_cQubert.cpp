@@ -1,6 +1,9 @@
 #include "ENTITY_cQubert.hpp"
-#include <iostream>
 #include <cmath>
+#include "QCORE_cQGame.hpp"
+
+/* temporary */ #include <iostream>
+                using namespace std;
 
 // sphere rendering code heavily based on that by Prof Carl Burch:
 // http://ozark.hendrix.edu/~burch/cs/490/sched/feb8/
@@ -22,11 +25,31 @@ cQubert::cQubert(cPlayState* ps, Color c)
 }
 
 cQubert::cQubert(cPlayState* ps, cQube* q, Color c)
-       : _playState(ps), _color(c), _qube(q), _x(_qube->getX()), _y(_qube->getY()), _z(_qube->getZ())
+       : _playState(ps), _color(c), _qube(q)
 {
+    _x = _qube->getX();
+    _y = _qube->getY();
+    _z = _qube->getZ();
 }
 
-void cQubert::update(CORE::cGame* game, float delta) {}
+void cQubert::move(int i, int k)
+{
+    cout << _qube->getI() + i << ", " << _qube->getK() + k << endl;
+
+    _qube = _playState->GetQubeAt(_qube->getI() + i, _qube->getK() + k);
+    _x = _qube->getX();
+    _y = _qube->getY();
+    _z = _qube->getZ();
+}
+
+void cQubert::update(CORE::cGame* game, float delta)
+{
+    //don't do anything here; input should be in cPlayState (by design)
+    /*
+    if (game->GetInput().GetKeyState(SDLK_LEFT))
+        game->EndGame();
+        */
+}
 
 void cQubert::render(float percent_tick)
 {
