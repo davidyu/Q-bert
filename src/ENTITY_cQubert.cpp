@@ -38,10 +38,16 @@ void cQubert::move(int i, int k)
 {
     cout << _qube->getI() + i << ", " << _qube->getK() + k << endl;
 
+    //map<pair<int, int>, vector<ENTITY::cQube*>*>::iterator it;
+
     _qube = _playState->GetQubeAt(_qube->getI() + i, _qube->getK() + k);
 
     if (_qube == 0) //death!
+    {
+        cout << "death!" << endl;
         _qube = _playState->GetDefaultQube();
+    }
+
 
     _x = _qube->getX();
     _y = _qube->getY();

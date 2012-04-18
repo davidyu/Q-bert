@@ -103,7 +103,13 @@ ENTITY::cQube* cPlayState::GetQubeAt(int i, int j)
     using std::map;
     using std::pair;
     using ENTITY::cQube;
-    vector<cQube*> v = *(*qubes.find(make_pair(i,j))).second;
+    map<pair<int, int>, vector<ENTITY::cQube*>*>::iterator it;
+    it = qubes.find(make_pair(i,j));
+
+    if (it == qubes.end())
+        return 0;
+
+    vector<cQube*> v = *(*it).second;
 
     if (!v.empty())
         return v.back();
