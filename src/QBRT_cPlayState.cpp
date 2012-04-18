@@ -38,7 +38,6 @@ bool cPlayState::OnEnter()
 void cPlayState::loadLevel()
 {
     //temporary
-
     int pyramid[49] = {1,2,3,4,5,6,7,
                        0,1,2,3,4,5,6,
                        0,0,1,2,3,4,5,
@@ -93,14 +92,18 @@ void cPlayState::Resume() {}
 
 void cPlayState::Update(CORE::cGame* game, float delta)
 {
-    if (game->GetInput().GetKeyState(HAR_ESCAPE)) game->EndGame();
-}
-static void
-Rander()
-{
-    glClearColor(0.0, 0.0, 0.0, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glRotatef(1.0, 1.0, 1.0, 1.0);
+    //cout << delta << endl;
+    if (game->GetInput().GetKeyState(HAR_ESCAPE))
+        game->EndGame();
+
+    //update all entities
+    using std::vector;
+    using ENTITY::cEntity;
+    for(vector<cEntity*>::iterator it = entities.begin(); it != entities.end(); ++it)
+    {
+        cEntity* e = *it;
+        e->update(game, delta);
+    }
 }
 
 //this takes the picture and plasters it
@@ -118,6 +121,7 @@ void RenderTexture(const cTexture& tex)
 
 void cPlayState::Render(CORE::cGame* game, float percent_tick)
 {
+    //cout << percent_tick << endl;
     SDL_Rect viewport, temp_rect;
     SDL_Renderer* renderer = game->GetRenderer();
     SDL_RenderGetViewport(renderer, &viewport);
@@ -132,7 +136,7 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
     for(vector<cEntity*>::iterator it = entities.begin(); it != entities.end(); ++it)
     {
         cEntity* e = *it;
-        e->render();
+        e->render(percent_tick);
     }
 
    //start with camera
@@ -148,8 +152,6 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
     glRotatef(30.0, 1,0,0);
     glRotatef(45.0, 0,1,0); //usually -45 by convention, but Q*BERT wants 45
     glTranslatef(xtrans, ytrans, ztrans);
-
-    //Rander();
 }
 
 void cPlayState::HandleInput() {}

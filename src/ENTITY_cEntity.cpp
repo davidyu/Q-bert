@@ -4,4 +4,4 @@ using namespace ENTITY;
 
 cEntity::cEntity() {}
 cEntity::~cEntity() {}
-void cEntity::render() {}
+void cEntity::render(float percent_tick) {}
