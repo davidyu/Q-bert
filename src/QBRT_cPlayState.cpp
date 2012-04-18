@@ -39,15 +39,19 @@ void cPlayState::loadLevel()
 {
     //temporary
 
-    int pyramid[25] = {1,2,3,4,5,
-                       0,1,2,3,4,
-                       0,0,1,2,3,
-                       0,0,0,1,2,
-                       0,0,0,0,1};
+    int pyramid[49] = {1,2,3,4,5,6,7,
+                       0,1,2,3,4,5,6,
+                       0,0,1,2,3,4,5,
+                       0,0,0,1,2,3,4,
+                       0,0,0,0,1,2,3,
+                       0,0,0,0,0,1,2,
+                       0,0,0,0,0,0,1};
 
-    int w = 5, h = 5;
+    int w = 7, h = 7;
 
-    float cube_width = 5, cube_height = 5, cube_depth = 5;
+    float cube_width  = 15,
+          cube_height = 15,
+          cube_depth  = 15;
 
     Color up(1.0f, 0, 0, 1.0f);
     Color down(0, 1.0f, 0, 1.0f);
@@ -75,7 +79,7 @@ void cPlayState::loadLevel()
         }
     }
 
-    camera_x = 0; camera_y = cube_height * 2; camera_z = 5 * cube_depth;
+    camera_x = 0; camera_y = 7 * cube_height; camera_z = 6 * cube_depth;
 
 }
 
@@ -136,10 +140,6 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
     GLfloat xtrans = -camera_x;
     GLfloat ytrans = -camera_y;
     GLfloat ztrans = -camera_z;
-
-    GLfloat xrot = 360 - rot_x;
-    GLfloat yrot = 360 - rot_y;
-    GLfloat zrot = 360 - rot_z;
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
