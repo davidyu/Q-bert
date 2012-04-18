@@ -39,11 +39,11 @@ void cPlayState::loadLevel()
 {
     //temporary
 
-    bool pyramid[25] = {1,1,1,1,1,
-                        0,1,1,1,1,
-                        0,0,1,1,1,
-                        0,0,0,1,1,
-                        0,0,0,0,1};
+    int pyramid[25] = {1,2,3,4,5,
+                       0,1,2,3,4,
+                       0,0,1,2,3,
+                       0,0,0,1,2,
+                       0,0,0,0,1};
 
     int w = 5, h = 5;
 
@@ -63,11 +63,14 @@ void cPlayState::loadLevel()
     {
         for (int i = 0; i < w; i++)
         {
-            if(pyramid[j*w + i] == 1)
+            if(pyramid[j*w + i] >= 1)
             {
-                cQube* q = new cQube(i*cube_width, 0, j*cube_height, cube_width, cube_depth, cube_height,
-                                     up, down, left, right, front, back);
-                entities.push_back(q);
+                for (int k = 0; k < pyramid[j*w + i]; k++)
+                {
+                    cQube* q = new cQube(i*cube_width, k*cube_height, j*cube_height, cube_width, cube_depth, cube_height,
+                                         up, down, left, right, front, back);
+                    entities.push_back(q);
+                }
             }
         }
     }
