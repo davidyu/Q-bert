@@ -1,10 +1,10 @@
 #ifndef CQUBERT_H
 #define CQUBERT_H
 
-#include "ENTITY_cEntity.hpp"
-#include "Color.hpp"
-#include "ENTITY_cQube.hpp"
 #include <SDL2/SDL_opengl.h>
+#include "Color.hpp"
+#include "ENTITY_cEntity.hpp"
+#include "ENTITY_cQube.hpp"
 
 namespace ENTITY
 {
@@ -15,15 +15,17 @@ namespace ENTITY
             cQubert(cQube* q, Color c);
 
             virtual void render(float percent_tick);
+            virtual void update(CORE::cGame* game, float delta);
 
         private:
-
             float _x,   //will be used for animation
                   _y,
                   _z;
 
-            cQube* qube; //which qube am I standing on?
+            cQube* _qube; //which qube am I standing on?
+
+            Color  _color;
     };
 }
 
-#endif
+#endif CQUBERT_H

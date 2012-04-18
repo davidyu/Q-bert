@@ -2,6 +2,8 @@
 #define DEMO_CPLAYSTATE_H
 
 #include <vector>
+#include <map>
+#include <utility>
 #include "STATE_iGameState.hpp"
 #include "ENTITY_cQube.hpp"
 //
@@ -16,6 +18,8 @@ namespace CORE
 //static STATE::iGameState* CreateInstance() {}
 
 using std::vector;
+using std::map;
+using std::pair;
 
 class cPlayState : public STATE::iGameState
 {
@@ -37,6 +41,7 @@ class cPlayState : public STATE::iGameState
 
         void HandleInput();
     private:
+        map<pair<int, int>, vector<ENTITY::cQube*>> qubes;
         vector<ENTITY::cEntity*> entities;
         void loadLevel();
     protected:

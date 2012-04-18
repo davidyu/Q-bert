@@ -2,7 +2,8 @@
 #include <vector>
 #include <iostream>
 
-//comments borrowed from NeHe:http://nehe.gamedev.net/tutorial/3d_shapes/10035/
+//cube code and comments heavily based on (and borrowed) from
+// NeHe: http://nehe.gamedev.net/tutorial/3d_shapes/10035/
 
 using namespace ENTITY;
 

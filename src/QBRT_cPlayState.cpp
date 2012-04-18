@@ -68,6 +68,7 @@ void cPlayState::loadLevel()
         {
             if(pyramid[j*w + i] >= 1)
             {
+
                 for (int k = 0; k < pyramid[j*w + i]; k++)
                 {
                     cQube* q = new cQube(i*cube_width, k*cube_height, j*cube_height, cube_width, cube_depth, cube_height,

@@ -17,15 +17,19 @@ namespace ENTITY
             virtual void render(float percent_tick);
             virtual void update(CORE::cGame* game, float delta);
 
+            float getX() { return _x; };
+            float getY() { return _y; };
+            float getZ() { return _z; };
+
         protected:
 
         float _x,
-            _y,
-            _z;
+              _y,
+              _z;
 
         float _width,
-            _depth,
-            _height;
+              _depth,
+              _height;
 
         Color _up,
               _down,
