@@ -58,7 +58,9 @@ bool cGame::Initialise()
     glEnable(GL_TEXTURE_2D);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-3.0, 3.0, 5.0, -3.0, -3.0, 3.0);
+    //glOrtho(-3.0, 3.0, 5.0, -3.0, -3.0, 3.0);
+
+    glOrtho(-100.0f, 100.0f, -100.0f, 100.0f, -500.0f, 500.0f);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();

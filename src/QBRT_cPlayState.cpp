@@ -47,9 +47,14 @@ void cPlayState::loadLevel()
 
     int w = 5, h = 5;
 
-    float cube_width = 0.5, cube_height = 0.5, cube_depth = 0.5;
+    float cube_width = 5, cube_height = 5, cube_depth = 5;
 
-    Color up(1.0f, 0.0f, 0.0f, 1.0f);
+    Color up(1.0f, 0, 0, 1.0f);
+    Color down(0, 1.0f, 0, 1.0f);
+    Color left(0.3f, 0.3f, 0.3f, 1.0f);
+    Color right(0, 1.0f, 1.0f, 1.0f);
+    Color front(0, 0, 1.0f, 1.0f);
+    Color back(0.3f, 0.3f, 0.3f, 1.0f);
     Color rest(0.3f, 0.3f, 0.3f, 1.0f);
 
     using std::vector; //need this!!!!!
@@ -60,7 +65,8 @@ void cPlayState::loadLevel()
         {
             if(pyramid[j*w + i] == 1)
             {
-                cQube* q = new cQube(i*cube_width, 0, j*cube_height, cube_width, cube_depth, cube_height, up, rest);
+                cQube* q = new cQube(i*cube_width, 0, j*cube_height, cube_width, cube_depth, cube_height,
+                                     up, down, left, right, front, back);
                 entities.push_back(q);
             }
         }
