@@ -138,14 +138,13 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
     GLfloat yrot = 360 - rot_y;
     GLfloat zrot = 360 - rot_z;
 
-    //iso
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    //glRotatef(0.1, 1.0, 1.0, 1.0);
-    glRotatef(30.0, 1,0,0);
-    glRotatef(-45.0, 0,1,0);
 
-    glTranslatef(xtrans, ytrans, .0f);
+    //isometric view!
+    glRotatef(30.0, 1,0,0);
+    glRotatef(45.0, 0,1,0); //usually -45 by convention, but Q*BERT wants 45
+    glTranslatef(xtrans, ytrans, ztrans);
 
     //Rander();
 }
