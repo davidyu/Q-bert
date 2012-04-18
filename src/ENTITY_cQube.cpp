@@ -16,7 +16,7 @@ cQube::cQube(float x, float y, float z, float w, float d, float h, Color up, Col
 {
 }
 
-void cQube::update(CORE::cGame* game, float delta) { }
+void cQube::update(CORE::cGame* game, float delta) {}
 
 void cQube::render(float percent_tick)
 {
