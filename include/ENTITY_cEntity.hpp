@@ -14,10 +14,13 @@ namespace ENTITY
         public:
             cEntity();
             virtual ~cEntity();
-            virtual void render(float percent_tick) = 0;
-            virtual void update(CORE::cGame* game, float delta) = 0;
-
+            virtual void render(float ticks) = 0;
+            virtual void update(CORE::cGame* game, float ticks) = 0;
+        protected:
+            float _x,   //for animation
+                  _y,
+                  _z;
     };
 }
 
-#endif CENTITY_H
+#endif

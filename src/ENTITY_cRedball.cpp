@@ -1,14 +1,16 @@
-#include "ENTITY_cQubert.hpp"
+#include "ENTITY_cRedball.hpp"
 #include <cmath>
-#include "QCORE_cQGame.hpp"
+
+using namespace ENTITY;
 
 /* temporary */ #include <iostream>
                 using namespace std;
 
-// sphere rendering code heavily based on that by Prof Carl Burch:
-// http://ozark.hendrix.edu/~burch/cs/490/sched/feb8/
-
-using namespace ENTITY;
+enum State {
+    JUMPING,
+    IDLE,
+    THINKING
+};
 
 const float RADIUS = 7.5f;
 const float Y_OFFSET = 15.0f;
@@ -16,55 +18,8 @@ const float Y_OFFSET = 15.0f;
 const int LAT_RESOLUTION = 20;
 const int LONG_RESOLUTION = 20;
 
-const float QBERT_R = 1.0,
-            QBERT_G = 0.5,
-            QBERT_B = 0.0;
-
-cQubert::cQubert(cPlayState* ps)
+void cRedball::update(CORE::cGame* game, float ticks)
 {
-    _playState = ps;
-    _qube = ps->GetQubeAt(0,0);
-    _x = _qube->getX();
-    _y = _qube->getY();
-    _z = _qube->getZ();
-    _qube->activate();
-    _color = Color(QBERT_R, QBERT_G, QBERT_B, 1.0f);
-}
-
-cQubert::cQubert(cPlayState* ps, cQube* q)
-       : _playState(ps), _qube(q)
-{
-    _x = _qube->getX();
-    _y = _qube->getY();
-    _z = _qube->getZ();
-    _qube->activate();
-    _color = Color(QBERT_R, QBERT_G, QBERT_B, 1.0f);
-}
-
-void cQubert::move(int i, int k)
-{
-    cout << _qube->getI() + i << ", " << _qube->getK() + k << endl;
-
-    //map<pair<int, int>, vector<ENTITY::cQube*>*>::iterator it;
-
-    _qube = _playState->GetQubeAt(_qube->getI() + i, _qube->getK() + k);
-
-    if (_qube == 0) //death!
-    {
-        cout << "death!" << endl;
-        _qube = _playState->GetDefaultQube();
-    }
-
-    _x = _qube->getX();
-    _y = _qube->getY();
-    _z = _qube->getZ();
-
-    _qube->activate();
-}
-
-void cQubert::update(CORE::cGame* game, float ticks)
-{
-    cout << ticks << endl;
     //don't do anything here; input should be in cPlayState (by design)
     /*
     if (game->GetInput().GetKeyState(SDLK_LEFT))
@@ -72,7 +27,7 @@ void cQubert::update(CORE::cGame* game, float ticks)
         */
 }
 
-void cQubert::render(float ticks)
+void cRedball::render(float ticks)
 {
     //cout << "called" << endl;
     //cout << percent_tick << endl;

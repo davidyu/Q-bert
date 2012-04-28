@@ -29,9 +29,6 @@ cTexture* p_tex = 0;
 
 bool cPlayState::OnEnter()
 {
-    p_tex = new cTexture("test.png");
-    p_tex->RegisterGL();
-
     loadLevel();
     addQubert();
 }
@@ -62,10 +59,11 @@ void cPlayState::loadLevel()
     Color back(0.3f, 0.3f, 0.3f, 1.0f);
     Color rest(0.3f, 0.3f, 0.3f, 1.0f);
 
-    using std::vector; //need this!!!!!
+    using std::vector;
     using std::map;
     using std::pair;
     using ENTITY::cQube;
+
     for (int j = 0; j < h; j++)
     {
         for (int i = 0; i < w; i++)
@@ -92,8 +90,7 @@ void cPlayState::loadLevel()
 
 void cPlayState::addQubert()
 {
-    Color qc(1.0f,0.5f,0.0f, 1.0f);
-    _qubert = new ENTITY::cQubert(this, GetQubeAt(0,6), qc);
+    _qubert = new ENTITY::cQubert(this, GetQubeAt(0,6));
     entities.push_back(_qubert);
 }
 
@@ -153,7 +150,7 @@ void cPlayState::Update(CORE::cGame* game, float delta)
 //this takes the picture and plasters it
 void RenderTexture(const cTexture& tex)
 {
-    glBindTexture(GL_TEXTURE_2D, tex.GetID());               // Select Our Texture
+    glBindTexture(GL_TEXTURE_2D, tex.GetID());               // Select Our Texturek
     glBegin(GL_QUADS);
 		// Front Face
 		glTexCoord2f(1.0f, 1.0f); glVertex3f( 2.0f,  2.0f,  1.0f);

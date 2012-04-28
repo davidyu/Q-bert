@@ -16,8 +16,8 @@ namespace ENTITY
             cQube(float x, float y, float z, float w, float d, float h, int i, int j, int k,
                   Color up, Color activated, Color down, Color left, Color right, Color front, Color back);
 
-            virtual void render(float percent_tick);
-            virtual void update(CORE::cGame* game, float delta);
+            virtual void render(float ticks);
+            virtual void update(CORE::cGame* game, float ticks);
 
             float getX() { return _x; };
             float getY() { return _y; };

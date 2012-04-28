@@ -14,19 +14,15 @@ namespace ENTITY
     class cQubert: public cEntity
     {
         public:
-            cQubert(cPlayState* ps, Color c); //make playstate singleton?
-            cQubert(cPlayState* ps, cQube* q, Color c);
+            cQubert(cPlayState* ps); //make playstate singleton?
+            cQubert(cPlayState* ps, cQube* q);
 
-            virtual void render(float percent_tick);
-            virtual void update(CORE::cGame* game, float delta);
+            virtual void render(float ticks);
+            virtual void update(CORE::cGame* game, float ticks);
 
             void move(int i, int k);
 
         private:
-            float _x,   //will be used for animation
-                  _y,
-                  _z;
-
             cQube*      _qube; //which qube am I standing on?
             cPlayState* _playState;
 

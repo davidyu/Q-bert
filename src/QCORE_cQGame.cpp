@@ -76,6 +76,8 @@ bool cGame::Initialise()
     state_factory.RegisterClass("game", cPlayState::CreateInstance); //this is where we push instances of game states
     m_state_manager.PushState(state_factory.CreateObject("game"));
 
+    m_timer.Start();
+
     return true;
 }
 
@@ -101,10 +103,12 @@ bool cGame::Terminate()
 void cGame::MainLoop()
 {
     iGameState* state;
-    float delta, percent_tick; // Dummy vars for now; substitute timer values in later
+    float ticks; // ticks since m_timer.start(); ignoring percent_tick/separate Update/Render deltas for now
+
 
     while (m_running)
     {
+        ticks = (float) m_timer.GetTicksSinceStart();
         SDL_Event event;
         while(SDL_PollEvent(&event)) {
             if(event.type == SDL_QUIT) {
@@ -117,10 +121,10 @@ void cGame::MainLoop()
         // Game Loop
         state = m_state_manager.GetCurrent();
         /*DEBUG*/assert(state!=0);
-        state->Update(this, delta);
+        state->Update(this, ticks);
 
 
-        state->Render(this, percent_tick);
+        state->Render(this, ticks);
 
         SDL_GL_SwapWindow(m_sdl_state->window);
         //SDL_RenderPresent(m_sdl_state->renderer); // Gets overwritten somehow by SwapWindow

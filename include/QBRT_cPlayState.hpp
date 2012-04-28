@@ -41,9 +41,9 @@ class cPlayState : public STATE::iGameState
         void Pause();
         void Resume();
 
-        void Update(CORE::cGame* game, float delta);
+        void Update(CORE::cGame* game, float ticks);
 
-        void Render(CORE::cGame* game, float percent_tick);
+        void Render(CORE::cGame* game, float ticks);
 
         void HandleInput();
 
