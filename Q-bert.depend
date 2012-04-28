@@ -29,16 +29,17 @@
 
 1334422630 /home/accts/ly58/cs478/final/Spice/include/CORE_keycodes.hpp
 
-1334601792 /home/accts/ly58/cs478/final/Spice/include/CORE_cTimer.hpp
+1335596000 /home/accts/ly58/cs478/final/Spice/include/CORE_cTimer.hpp
+	<SDL2/SDL.h>
 
 1334601792 /home/accts/ly58/cs478/final/Spice/include/STATE_cGameStateManager.hpp
 	<vector>
 
-1334422630 /home/accts/ly58/cs478/final/Spice/include/cGenericFactory.hpp
+1335596391 /home/accts/ly58/cs478/final/Spice/include/cGenericFactory.hpp
 	<map>
 	<string>
 
-1334422630 /home/accts/ly58/cs478/final/Spice/include/STATE_iGameState.hpp
+1335596000 /home/accts/ly58/cs478/final/Spice/include/STATE_iGameState.hpp
 
 1334452870 /home/accts/ly58/cs478/final/Q-bert/include/demo_cPlayState.hpp
 	"STATE_iGameState.hpp"
@@ -49,7 +50,7 @@
 	"CORE_cGame.hpp"
 	"GFX_cTexture.hpp"
 
-1334953862 /home/accts/ly58/cs478/final/Spice/include/GFX_cTexture.hpp
+1335596000 /home/accts/ly58/cs478/final/Spice/include/GFX_cTexture.hpp
 	<memory>
 	<cassert>
 	<string>
@@ -350,7 +351,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1335548675 /home/accts/ly58/cs478/final/Spice/include/CORE_cGame.hpp
+1335596001 /home/accts/ly58/cs478/final/Spice/include/CORE_cGame.hpp
 	"SDL2/SDL.h"
 	"CORE_iApplication.hpp"
 	"CORE_cSDLState.hpp"
@@ -369,19 +370,20 @@
 	"SDL2/SDL.h"
 	"CORE_cTimer.hpp"
 
-1334953862 source:/home/accts/ly58/cs478/final/Spice/src/GFX_G2D_cSpriteBatch.cpp
+1335596000 source:/home/accts/ly58/cs478/final/Spice/src/GFX_G2D_cSpriteBatch.cpp
 	"GFX_G2D_cSpriteBatch.hpp"
 	"GFX_cTextureWrapper.hpp"
 	"GFX_cTextureMesh.hpp"
 	"MATH_MathHelper.hpp"
 	"memory_macros.h"
 
-1334953862 /home/accts/ly58/cs478/final/Spice/include/GFX_G2D_cSpriteBatch.hpp
+1335596000 /home/accts/ly58/cs478/final/Spice/include/GFX_G2D_cSpriteBatch.hpp
+	"GFX_Color4.hpp"
 
-1335373550 source:/home/accts/ly58/cs478/final/Spice/src/GFX_G2D_cTextureRegion.cpp
+1335596000 source:/home/accts/ly58/cs478/final/Spice/src/GFX_G2D_cTextureRegion.cpp
 	"GFX_G2D_cTextureRegion.hpp"
 
-1335373550 /home/accts/ly58/cs478/final/Spice/include/GFX_G2D_cTextureRegion.hpp
+1335596000 /home/accts/ly58/cs478/final/Spice/include/GFX_G2D_cTextureRegion.hpp
 	<vector>
 	"GFX_cTextureWrapper.hpp"
 
@@ -399,15 +401,16 @@
 1334422630 /home/accts/ly58/cs478/final/Spice/include/MATH_Vec3.hpp
 	"MATH_MathHelper.hpp"
 
-1335373550 /home/accts/ly58/cs478/final/Spice/include/MATH_MathHelper.hpp
+1335596000 /home/accts/ly58/cs478/final/Spice/include/MATH_MathHelper.hpp
 	<cmath>
 
-1334422630 /home/accts/ly58/cs478/final/Spice/include/MATH_Vec2.hpp
+1335596000 /home/accts/ly58/cs478/final/Spice/include/MATH_Vec2.hpp
+	"MATH_MathHelper.hpp"
 
 1334713170 /home/accts/ly58/cs478/final/Spice/include/MATH_Matrix4x4.hpp
 	"MATH_MathHelper.hpp"
 
-1334433700 source:/home/accts/ly58/cs478/final/Spice/src/GFX_cImage.cpp
+1335596000 source:/home/accts/ly58/cs478/final/Spice/src/GFX_cImage.cpp
 	"GFX_cImage.hpp"
 	<iostream>
 	<SDL2/SDL_image.h>
@@ -418,15 +421,16 @@
 	<SDL2/SDL_opengl.h>
 	<cassert>
 
-1335373550 source:/home/accts/ly58/cs478/final/Spice/src/GFX_cTexture.cpp
+1335596000 source:/home/accts/ly58/cs478/final/Spice/src/GFX_cTexture.cpp
 	"GFX_cTexture.hpp"
 	"GFX_cImage.hpp"
 	<GL/glu.h>
+	<iostream>
 
 1334422631 source:/home/accts/ly58/cs478/final/Spice/src/MATH_Matrix4x4.cpp
 	"MATH_Matrix4x4.hpp"
 
-1334601793 source:/home/accts/ly58/cs478/final/Spice/src/STATE_cGameStateManager.cpp
+1335596000 source:/home/accts/ly58/cs478/final/Spice/src/STATE_cGameStateManager.cpp
 	<cassert>
 	"memory_macros.h"
 	"STATE_cGameStateManager.hpp"
@@ -486,36 +490,43 @@
 	<SDL2/SDL.h>
 	<SDL2/SDL_opengl.h>
 
-1334629365 /home/accts/ly58/cs478/final/Q-bert/include/QCORE_cQGame.hpp
+1335596845 /home/accts/ly58/cs478/final/Q-bert/include/QCORE_cQGame.hpp
 	"SDL2/SDL.h"
 	"CORE_iApplication.hpp"
+	"STATE_iGameState.hpp"
 	"CORE_cSDLState.hpp"
 	"CORE_Input.hpp"
 	"CORE_cTimer.hpp"
 	"STATE_cGameStateManager.hpp"
 	"cGenericFactory.hpp"
 
-1335586282 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
+1335597077 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
 	<SDL2/SDL_opengl.h>
 	"QBRT_cPlayState.hpp"
+	"STATE_iGameState.hpp"
 	"QCORE_cQGame.hpp"
 	"GFX_cTexture.hpp"
 
-1335586265 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cPlayState.hpp
+1335597119 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cPlayState.hpp
 	<vector>
 	<map>
 	<utility>
 	"STATE_iGameState.hpp"
+	"cGenericFactory.hpp"
 	"ENTITY_cQube.hpp"
 	"ENTITY_cQubert.hpp"
 	"ENTITY_cRedball.hpp"
+	"QBRT_cGameOverState.hpp"
+	"STATE_cGameStateManager.hpp"
+	<iostream>
 
-1335549581 source:/home/accts/ly58/cs478/final/Q-bert/src/QCORE_cQGame.cpp
+1335597057 source:/home/accts/ly58/cs478/final/Q-bert/src/QCORE_cQGame.cpp
 	<SDL2/SDL_opengl.h>
 	<SDL2/SDL_image.h>
 	"QCORE_cQGame.hpp"
 	"STATE_iGameState.hpp"
 	"QBRT_cPlayState.hpp"
+	"QBRT_cGameOverState.hpp"
 	<cassert>
 	<stdlib.h>
 
@@ -531,22 +542,22 @@
 
 1334714718 source:/home/accts/ly58/cs478/final/Q-bert/src/GFX_cCamera.cpp
 
-1334953862 /home/accts/ly58/cs478/final/Spice/include/GFX_cTextureWrapper.hpp
+1335596000 /home/accts/ly58/cs478/final/Spice/include/GFX_cTextureWrapper.hpp
 	<SDL2/SDL_opengl.h>
 
-1335584286 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQubert.cpp
+1335593542 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQubert.cpp
 	"ENTITY_cQubert.hpp"
 	<cmath>
 	"QCORE_cQGame.hpp"
 
-1335581517 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cQubert.hpp
+1335593827 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cQubert.hpp
 	<SDL2/SDL_opengl.h>
 	"Color.hpp"
 	"ENTITY_cEntity.hpp"
 	"ENTITY_cQube.hpp"
 	"QBRT_cPlayState.hpp"
 
-1335586329 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cRedball.cpp
+1335588354 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cRedball.cpp
 	"ENTITY_cRedball.hpp"
 	<cmath>
 
@@ -556,4 +567,13 @@
 	"ENTITY_cEntity.hpp"
 	"ENTITY_cQube.hpp"
 	"QBRT_cPlayState.hpp"
+
+1335595391 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cGameOverState.hpp
+	"STATE_iGameState.hpp"
+
+1335595797 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cGameOverState.cpp
+	"QBRT_cGameOverState.hpp"
+	<iostream>
+
+1335596000 /home/accts/ly58/cs478/final/Spice/include/GFX_Color4.hpp
 

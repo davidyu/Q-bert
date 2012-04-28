@@ -3,6 +3,7 @@
 
 #include "SDL2/SDL.h"
 #include "CORE_iApplication.hpp"
+#include "STATE_iGameState.hpp"
 #include "CORE_cSDLState.hpp"
 #include "CORE_Input.hpp"
 #include "CORE_cTimer.hpp"
@@ -26,6 +27,7 @@ namespace CORE
 
         CORE::Input&                GetInput();
         STATE::cGameStateManager&   GetStateManager();
+        cGenericFactory<STATE::iGameState>& GetStateFactory();
 
         inline SDL_Renderer*        GetRenderer() const{ return m_sdl_state->renderer; }
 

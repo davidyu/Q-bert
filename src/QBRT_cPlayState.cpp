@@ -1,5 +1,6 @@
 #include <SDL2/SDL_opengl.h>
 #include "QBRT_cPlayState.hpp"
+#include "STATE_iGameState.hpp"
 #include "QCORE_cQGame.hpp"
 #include "GFX_cTexture.hpp"
 
@@ -9,13 +10,16 @@
          using namespace std;
 
 using namespace GFX;
+using namespace CORE;
+using namespace STATE;
 
 float camera_x, camera_y, camera_z;
 float rot_x, rot_y, rot_z;
 
 cPlayState::cPlayState()
            :_addEnemyThresh(3000), _lastEnemyGenTick(0)
-{}
+{
+}
 
 cPlayState::~cPlayState() {}
 
@@ -95,6 +99,7 @@ void cPlayState::loadLevel()
 void cPlayState::addQubert()
 {
     _qubert = new ENTITY::cQubert(this, GetQubeAt(0,6));
+    _qubertLives = 3;
     entities.push_back(_qubert);
 }
 
@@ -138,18 +143,45 @@ ENTITY::cQube* cPlayState::GetQubeAt(int i, int j)
 void cPlayState::Remove(ENTITY::cEntity* e) //removes entity
 {
 
+
+}
+
+void cPlayState::ReportQubertDeath()
+{
+    _qubertLives--;
 }
 
 bool cPlayState::OnExit()
 {
     delete p_tex;
+
     p_tex = 0;
+
+    using std::vector;
+    using ENTITY::cEntity;
+    for(vector<cEntity*>::iterator it = entities.begin(); it != entities.end(); ++it)
+    {
+        cEntity* e = *it;
+        delete e;
+    }
+
+    entities.clear();
 }
+
 void cPlayState::Pause() {}
 void cPlayState::Resume() {}
 
 void cPlayState::Update(CORE::cGame* game, float delta)
 {
+    if (_qubertLives <= 0)
+    {
+        STATE::cGameStateManager m = game->GetStateManager();
+        cGenericFactory<STATE::iGameState> f = game->GetStateFactory();
+
+        //f.RegisterClass("game_win", cGameOverState::CreateInstance);
+        m.PushState(f.CreateObject("game"));
+    }
+
     //qubert movement logic
     if (game->GetInput().GetKeyState(HAR_ESCAPE))
         game->EndGame();
@@ -163,7 +195,10 @@ void cPlayState::Update(CORE::cGame* game, float delta)
     else if (game->GetInput().OnKeyDown(HAR_UP))
         _qubert->move(0,1);
 
-    cout << _lastEnemyGenTick << endl;
+    if (game->GetInput().GetKeyState(HAR_p))
+        game->
+
+    //cout << _lastEnemyGenTick << endl;
     //add new enemies
     if (delta - _lastEnemyGenTick >= _addEnemyThresh)
     {

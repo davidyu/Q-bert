@@ -39,11 +39,11 @@ void cRedball::update(CORE::cGame* game, float ticks)
     {
         //move somewhere
         int r = rand() % 2;
-        if (r == 0 && (_qube->getJ() - 1 > 0 || _qube->getJ() == 0)) //left
+        if (r == 0 && _qube->getJ() > 0) //left
         {
             move(0, -1);
         }
-        else if (_qube->getI() + 1 < 6 || _qube->getI() == 6)        //right
+        else if (_qube->getI() < 6)        //right
         {
             move(1, 0);
         }
@@ -72,6 +72,8 @@ void cRedball::move(int i, int k)
 
 void cRedball::render(float ticks)
 {
+    if (_state == DEAD)
+        return;
     //cout << "called" << endl;
     //cout << percent_tick << endl;
     glPushMatrix();

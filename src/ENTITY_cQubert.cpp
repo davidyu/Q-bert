@@ -52,6 +52,7 @@ void cQubert::move(int i, int k)
     if (_qube == 0) //death!
     {
         cout << "death!" << endl;
+        _playState->ReportQubertDeath();
         _qube = _playState->GetDefaultQube();
     }
 

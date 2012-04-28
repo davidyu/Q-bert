@@ -3,6 +3,7 @@
 #include "QCORE_cQGame.hpp"
 #include "STATE_iGameState.hpp"
 #include "QBRT_cPlayState.hpp"
+#include "QBRT_cGameOverState.hpp"
 
 
 
@@ -38,7 +39,7 @@ bool cGame::Initialise()
     m_running = true;
     // Setup SDL Window and Render
     m_sdl_state = new cSDLState(SCREEN_W, SCREEN_H);
-    m_sdl_state->window = SDL_CreateWindow(m_sdl_state->window_title,
+    m_sdl_state->window = SDL_CreateWindow("Qubert!",
         m_sdl_state->window_x,
         m_sdl_state->window_y,
         m_sdl_state->window_w , m_sdl_state->window_h,
@@ -74,7 +75,9 @@ bool cGame::Initialise()
     m_input.Initialise();
 
     state_factory.RegisterClass("game", cPlayState::CreateInstance); //this is where we push instances of game states
+    state_factory.RegisterClass("game_win", cGameOverState::CreateInstance);
     m_state_manager.PushState(state_factory.CreateObject("game"));
+    //m_state_manager.PushState(state_factory.CreateObject("game_win"));
 
     m_timer.Start();
 
@@ -98,13 +101,14 @@ bool cGame::Terminate()
     }
     SDL_Quit();
     IMG_Quit();
+
+    return true;
 }
 
 void cGame::MainLoop()
 {
     iGameState* state;
     float ticks; // ticks since m_timer.start(); ignoring percent_tick/separate Update/Render deltas for now
-
 
     while (m_running)
     {
@@ -144,4 +148,9 @@ Input& cGame::GetInput()
 cGameStateManager& cGame::GetStateManager()
 {
     return m_state_manager;
+}
+
+cGenericFactory<STATE::iGameState>& cGame::GetStateFactory()
+{
+    return state_factory;
 }

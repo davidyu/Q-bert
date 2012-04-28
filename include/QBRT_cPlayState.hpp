@@ -5,11 +5,13 @@
 #include <map>
 #include <utility>
 #include "STATE_iGameState.hpp"
+#include "cGenericFactory.hpp"
 #include "ENTITY_cQube.hpp"
 #include "ENTITY_cQubert.hpp"
 #include "ENTITY_cRedball.hpp"
-//
-/*temp*/#include <iostream>
+#include "QBRT_cGameOverState.hpp"
+
+#include <iostream>
 
 namespace CORE
 {
@@ -43,13 +45,15 @@ class cPlayState : public STATE::iGameState
         void Pause();
         void Resume();
 
-        void Update(CORE::cGame* game, float ticks);
+        void Update(CORE::cGame* game, float delta);
 
-        void Render(CORE::cGame* game, float ticks);
+        void Render(CORE::cGame* game, float percent_tick);
 
         void HandleInput();
 
         void Remove(ENTITY::cEntity* e); //removes entity
+
+        void ReportQubertDeath();
 
         ENTITY::cQube* GetQubeAt(int i, int j);
         ENTITY::cQube* GetDefaultQube() { return _defaultQube; };
@@ -62,6 +66,7 @@ class cPlayState : public STATE::iGameState
 
         const int _addEnemyThresh;
         int       _lastEnemyGenTick;
+        int       _qubertLives;
 
         void loadLevel();
         void addQubert();
