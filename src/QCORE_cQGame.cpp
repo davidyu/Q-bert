@@ -75,9 +75,8 @@ bool cGame::Initialise()
     m_input.Initialise();
 
     state_factory.RegisterClass("game", cPlayState::CreateInstance); //this is where we push instances of game states
-    state_factory.RegisterClass("game_win", cGameOverState::CreateInstance);
+    state_factory.RegisterClass("game_over", cGameOverState::CreateInstance);
     m_state_manager.PushState(state_factory.CreateObject("game"));
-    //m_state_manager.PushState(state_factory.CreateObject("game_win"));
 
     m_timer.Start();
 
@@ -127,6 +126,16 @@ void cGame::MainLoop()
         /*DEBUG*/assert(state!=0);
         state->Update(this, ticks);
 
+        //clear screen - good to do generally
+        /*
+        glClearColor(0.0, 0.0, 0.0, 1.0);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        SDL_GL_MakeCurrent(m_sdl_state->window, m_sdl_state->glctx);
+        */
+
+
+        if (m_state_manager.GetCurrent() != state) //if pushed/replaced state, just do it all over
+            continue;
 
         state->Render(this, ticks);
 

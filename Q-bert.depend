@@ -430,7 +430,7 @@
 1334422631 source:/home/accts/ly58/cs478/final/Spice/src/MATH_Matrix4x4.cpp
 	"MATH_Matrix4x4.hpp"
 
-1335596000 source:/home/accts/ly58/cs478/final/Spice/src/STATE_cGameStateManager.cpp
+1335636249 source:/home/accts/ly58/cs478/final/Spice/src/STATE_cGameStateManager.cpp
 	<cassert>
 	"memory_macros.h"
 	"STATE_cGameStateManager.hpp"
@@ -490,7 +490,7 @@
 	<SDL2/SDL.h>
 	<SDL2/SDL_opengl.h>
 
-1335596845 /home/accts/ly58/cs478/final/Q-bert/include/QCORE_cQGame.hpp
+1335634333 /home/accts/ly58/cs478/final/Q-bert/include/QCORE_cQGame.hpp
 	"SDL2/SDL.h"
 	"CORE_iApplication.hpp"
 	"STATE_iGameState.hpp"
@@ -500,7 +500,7 @@
 	"STATE_cGameStateManager.hpp"
 	"cGenericFactory.hpp"
 
-1335634129 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
+1335643367 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
 	<SDL2/SDL_opengl.h>
 	"QBRT_cPlayState.hpp"
 	"STATE_iGameState.hpp"
@@ -519,7 +519,7 @@
 	"QBRT_cGameOverState.hpp"
 	<iostream>
 
-1335598202 source:/home/accts/ly58/cs478/final/Q-bert/src/QCORE_cQGame.cpp
+1335643400 source:/home/accts/ly58/cs478/final/Q-bert/src/QCORE_cQGame.cpp
 	<SDL2/SDL_opengl.h>
 	<SDL2/SDL_image.h>
 	"QCORE_cQGame.hpp"
@@ -567,12 +567,32 @@
 	"ENTITY_cQube.hpp"
 	"QBRT_cPlayState.hpp"
 
-1335595391 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cGameOverState.hpp
+1335641948 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cGameOverState.hpp
 	"STATE_iGameState.hpp"
 
-1335595797 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cGameOverState.cpp
+1335643275 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cGameOverState.cpp
+	<SDL2/SDL_opengl.h>
+	"QCORE_cQGame.hpp"
 	"QBRT_cGameOverState.hpp"
-	<iostream>
+	"GFX_cTextureRegistry.hpp"
+	"GFX_cImage.hpp"
+	"GFX_cTexture.hpp"
+	"GFX_G2D_cAnimation.hpp"
+	"GFX_G2D_cTextureRegion.hpp"
+	"GFX_GfxHelper.hpp"
 
 1335596000 /home/accts/ly58/cs478/final/Spice/include/GFX_Color4.hpp
+
+1335373550 /home/accts/ly58/cs478/final/Spice/include/GFX_cTextureRegistry.hpp
+	<unordered_map>
+	<string>
+	"GFX_cTextureWrapper.hpp"
+
+1335596000 /home/accts/ly58/cs478/final/Spice/include/GFX_G2D_cAnimation.hpp
+	<vector>
+	"MATH_MathHelper.hpp"
+
+1335641735 /home/accts/ly58/cs478/final/Spice/include/GFX_GfxHelper.hpp
+	<SDL2/SDL_opengl.h>
+	"GFX_cTextureWrapper.hpp"
 

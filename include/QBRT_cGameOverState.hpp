@@ -25,6 +25,9 @@ class cGameOverState : public STATE::iGameState
 
         void Render(CORE::cGame* game, float delta);
         void Update(CORE::cGame* game, float percent_ticks);
+    private:
+        int m_state;
+        int m_ticksSinceGameOver;
 };
 
 #endif //QBRT_CGAMEOVERSTATE_H

@@ -36,6 +36,7 @@ cTexture* p_tex = 0;
 
 bool cPlayState::OnEnter()
 {
+    cout << "new game" << endl;
     loadLevel();
     addQubert();
 }
@@ -153,12 +154,9 @@ void cPlayState::ReportQubertDeath()
 
 bool cPlayState::OnExit()
 {
-    delete p_tex;
-
-    p_tex = 0;
-
     using std::vector;
     using ENTITY::cEntity;
+
     for(vector<cEntity*>::iterator it = entities.begin(); it != entities.end(); ++it)
     {
         cEntity* e = *it;
@@ -173,14 +171,6 @@ void cPlayState::Resume() {}
 
 void cPlayState::Update(CORE::cGame* game, float delta)
 {
-    if (_qubertLives <= 0)
-    {
-        STATE::cGameStateManager m = game->GetStateManager();
-        cGenericFactory<STATE::iGameState> f = game->GetStateFactory();
-
-        m.PushState(game->state_factory.CreateObject("game_win"));
-    }
-
     //qubert movement logic
     if (game->GetInput().GetKeyState(HAR_ESCAPE))
         game->EndGame();
@@ -215,19 +205,26 @@ void cPlayState::Update(CORE::cGame* game, float delta)
         cEntity* e = *it;
         e->update(game, delta);
     }
+
+    if (_qubertLives <= 0) //game over!
+    {
+        game->GetStateManager().ReplaceState(game->state_factory.CreateObject("game_over"));
+    }
 }
 
 void cPlayState::Render(CORE::cGame* game, float percent_tick)
 {
-    //cout << percent_tick << endl;
+    cout << percent_tick << endl;
     SDL_Rect viewport, temp_rect;
     SDL_Renderer* renderer = game->GetRenderer();
     SDL_RenderGetViewport(renderer, &viewport);
 
     SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);
 
+
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 
     using std::vector;
     using ENTITY::cEntity;
