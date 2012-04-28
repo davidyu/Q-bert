@@ -67,7 +67,7 @@ void cRedball::move(int i, int k)
     _y = _qube->getY();
     _z = _qube->getZ();
 
-    _qube->activate();
+    //_qube->activate();
 }
 
 void cRedball::render(float ticks)

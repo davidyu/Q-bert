@@ -56,6 +56,7 @@ bool cGame::Initialise()
 
     SDL_GL_SetSwapInterval(1); // 1 for Vsync?
 
+
     glEnable(GL_TEXTURE_2D);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -68,6 +69,8 @@ bool cGame::Initialise()
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     glShadeModel(GL_SMOOTH);
+
+
 
                            // Enable Texture Mapping ( NEW )
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);          // Really Nice Perspective
@@ -127,17 +130,16 @@ void cGame::MainLoop()
         state->Update(this, ticks);
 
         //clear screen - good to do generally
+        //glClearColor(0.0, 0.0, 0.0, 1.0);
+        //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        //SDL_GL_MakeCurrent(m_sdl_state->window, m_sdl_state->glctx);
+
+        state = m_state_manager.GetCurrent();
         /*
-        glClearColor(0.0, 0.0, 0.0, 1.0);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        SDL_GL_MakeCurrent(m_sdl_state->window, m_sdl_state->glctx);
-        */
-
-
-        if (m_state_manager.GetCurrent() != state) //if pushed/replaced state, just do it all over
-            continue;
-
-        state->Render(this, ticks);
+        if (m_state_manager.GetCurrent() == state) //if pushed/replaced state, just do it all over
+        {*/
+            state->Render(this, ticks);
+        //}
 
         SDL_GL_SwapWindow(m_sdl_state->window);
         //SDL_RenderPresent(m_sdl_state->renderer); // Gets overwritten somehow by SwapWindow

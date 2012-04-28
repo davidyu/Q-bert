@@ -39,6 +39,26 @@ bool cPlayState::OnEnter()
     cout << "new game" << endl;
     loadLevel();
     addQubert();
+    resetSDLView();
+}
+
+void cPlayState::resetSDLView()
+{
+    cout << "reset called" << endl;
+    glEnable(GL_TEXTURE_2D);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+
+    glOrtho(-100.0f, 100.0f, -100.0f, 100.0f, -500.0f, 500.0f);
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glClearDepth(1.0f);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+    glShadeModel(GL_SMOOTH);
+
+    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);          // Really Nice Perspective
 }
 
 void cPlayState::loadLevel()
@@ -207,24 +227,19 @@ void cPlayState::Update(CORE::cGame* game, float delta)
     }
 
     if (_qubertLives <= 0) //game over!
-    {
         game->GetStateManager().ReplaceState(game->state_factory.CreateObject("game_over"));
-    }
 }
 
 void cPlayState::Render(CORE::cGame* game, float percent_tick)
 {
-    cout << percent_tick << endl;
     SDL_Rect viewport, temp_rect;
     SDL_Renderer* renderer = game->GetRenderer();
     SDL_RenderGetViewport(renderer, &viewport);
 
     SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);
 
-
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 
     using std::vector;
     using ENTITY::cEntity;
@@ -242,6 +257,7 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
+
     //isometric view!
     glRotatef(30.0, 1,0,0);
     glRotatef(45.0, 0,1,0); //usually -45 by convention, but Q*BERT wants 45
@@ -249,4 +265,3 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
 }
 
 void cPlayState::HandleInput() {}
-

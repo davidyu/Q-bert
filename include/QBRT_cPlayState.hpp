@@ -71,6 +71,7 @@ class cPlayState : public STATE::iGameState
         void loadLevel();
         void addQubert();
         void addEnemy(float now);
+        void resetSDLView();
 
     protected:
 
