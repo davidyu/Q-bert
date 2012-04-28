@@ -178,7 +178,7 @@ void cPlayState::Update(CORE::cGame* game, float delta)
         STATE::cGameStateManager m = game->GetStateManager();
         cGenericFactory<STATE::iGameState> f = game->GetStateFactory();
 
-        m.PushState(f.CreateObject("game_win"));
+        m.PushState(game->state_factory.CreateObject("game_win"));
     }
 
     //qubert movement logic
