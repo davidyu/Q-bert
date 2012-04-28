@@ -64,7 +64,7 @@ void cQubert::move(int i, int k)
 
 void cQubert::update(CORE::cGame* game, float ticks)
 {
-    cout << ticks << endl;
+    //cout << ticks << endl;
     //don't do anything here; input should be in cPlayState (by design)
     /*
     if (game->GetInput().GetKeyState(SDLK_LEFT))

@@ -468,7 +468,7 @@
 1334953862 /home/accts/ly58/cs478/final/Spice/include/GFX_cTextureMesh.hpp
 	<vector>
 
-1335549693 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQube.cpp
+1335582066 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQube.cpp
 	"ENTITY_cQube.hpp"
 	<vector>
 	<iostream>
@@ -495,19 +495,20 @@
 	"STATE_cGameStateManager.hpp"
 	"cGenericFactory.hpp"
 
-1335581447 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
+1335586282 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
 	<SDL2/SDL_opengl.h>
 	"QBRT_cPlayState.hpp"
 	"QCORE_cQGame.hpp"
 	"GFX_cTexture.hpp"
 
-1335549710 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cPlayState.hpp
+1335586265 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cPlayState.hpp
 	<vector>
 	<map>
 	<utility>
 	"STATE_iGameState.hpp"
 	"ENTITY_cQube.hpp"
 	"ENTITY_cQubert.hpp"
+	"ENTITY_cRedball.hpp"
 
 1335549581 source:/home/accts/ly58/cs478/final/Q-bert/src/QCORE_cQGame.cpp
 	<SDL2/SDL_opengl.h>
@@ -533,7 +534,7 @@
 1334953862 /home/accts/ly58/cs478/final/Spice/include/GFX_cTextureWrapper.hpp
 	<SDL2/SDL_opengl.h>
 
-1335581798 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQubert.cpp
+1335584286 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQubert.cpp
 	"ENTITY_cQubert.hpp"
 	<cmath>
 	"QCORE_cQGame.hpp"
@@ -545,11 +546,13 @@
 	"ENTITY_cQube.hpp"
 	"QBRT_cPlayState.hpp"
 
-1335581596 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cRedball.cpp
+1335586329 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cRedball.cpp
 	"ENTITY_cRedball.hpp"
 	<cmath>
 
-1335579851 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cRedball.hpp
+1335586123 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cRedball.hpp
+	<SDL2/SDL_opengl.h>
+	"Color.hpp"
 	"ENTITY_cEntity.hpp"
 	"ENTITY_cQube.hpp"
 	"QBRT_cPlayState.hpp"

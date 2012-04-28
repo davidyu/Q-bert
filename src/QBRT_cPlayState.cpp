@@ -13,7 +13,10 @@ using namespace GFX;
 float camera_x, camera_y, camera_z;
 float rot_x, rot_y, rot_z;
 
-cPlayState::cPlayState() {}
+cPlayState::cPlayState()
+           :_addEnemyThresh(3000), _lastEnemyGenTick(0)
+{}
+
 cPlayState::~cPlayState() {}
 
 STATE::iGameState* cPlayState::CreateInstance()
@@ -50,11 +53,11 @@ void cPlayState::loadLevel()
           cube_height = 15,
           cube_depth  = 15;
 
-    Color up(1.0f, 0, 0, 1.0f);
-    Color activated(0.5f, 0.5f, 0, 1.0f);
+    Color up(0.90f, 0.82f, 0, 1.0f);
+    Color activated(0.32f, 0.32f, 0.99f, 1.0f);
     Color down(0, 1.0f, 0, 1.0f);
-    Color left(0.3f, 0.3f, 0.3f, 1.0f);
-    Color right(0, 1.0f, 1.0f, 1.0f);
+    Color left(0.30f, 0.63f, 0.59f, 1.0f);
+    Color right(0.19f, 0.26f, 0.26f, 1.0f);
     Color front(0, 0, 1.0f, 1.0f);
     Color back(0.3f, 0.3f, 0.3f, 1.0f);
     Color rest(0.3f, 0.3f, 0.3f, 1.0f);
@@ -64,6 +67,7 @@ void cPlayState::loadLevel()
     using std::pair;
     using ENTITY::cQube;
 
+    //pyramid construction
     for (int j = 0; j < h; j++)
     {
         for (int i = 0; i < w; i++)
@@ -94,6 +98,23 @@ void cPlayState::addQubert()
     entities.push_back(_qubert);
 }
 
+void cPlayState::addEnemy(float now)
+{
+    using ENTITY::cRedball;
+    using ENTITY::cQube;
+    srand(time(NULL));
+    cQube* startingQube;
+
+    int r = rand() % 2;
+    if (r == 0)
+        startingQube = GetQubeAt(0, 5);
+    else
+        startingQube = GetQubeAt(1, 6);
+
+    cRedball* rb = new cRedball(this, startingQube, (int)now);
+    entities.push_back(rb);
+}
+
 ENTITY::cQube* cPlayState::GetQubeAt(int i, int j)
 {
     using std::vector; //need this!!!!!
@@ -114,6 +135,11 @@ ENTITY::cQube* cPlayState::GetQubeAt(int i, int j)
         return 0;
 }
 
+void cPlayState::Remove(ENTITY::cEntity* e) //removes entity
+{
+
+}
+
 bool cPlayState::OnExit()
 {
     delete p_tex;
@@ -124,7 +150,7 @@ void cPlayState::Resume() {}
 
 void cPlayState::Update(CORE::cGame* game, float delta)
 {
-    //cout << delta << endl;
+    //qubert movement logic
     if (game->GetInput().GetKeyState(HAR_ESCAPE))
         game->EndGame();
 
@@ -137,6 +163,14 @@ void cPlayState::Update(CORE::cGame* game, float delta)
     else if (game->GetInput().OnKeyDown(HAR_UP))
         _qubert->move(0,1);
 
+    cout << _lastEnemyGenTick << endl;
+    //add new enemies
+    if (delta - _lastEnemyGenTick >= _addEnemyThresh)
+    {
+        addEnemy(delta);
+        _lastEnemyGenTick = delta;
+    }
+
     //update all entities
     using std::vector;
     using ENTITY::cEntity;
@@ -145,19 +179,6 @@ void cPlayState::Update(CORE::cGame* game, float delta)
         cEntity* e = *it;
         e->update(game, delta);
     }
-}
-
-//this takes the picture and plasters it
-void RenderTexture(const cTexture& tex)
-{
-    glBindTexture(GL_TEXTURE_2D, tex.GetID());               // Select Our Texturek
-    glBegin(GL_QUADS);
-		// Front Face
-		glTexCoord2f(1.0f, 1.0f); glVertex3f( 2.0f,  2.0f,  1.0f);
-		glTexCoord2f(0.0f, 1.0f); glVertex3f(-2.0f,  2.0f,  1.0f);
-		glTexCoord2f(0.0f, 0.0f); glVertex3f(-2.0f, -2.0f,  1.0f);
-		glTexCoord2f(1.0f, 0.0f); glVertex3f( 2.0f, -2.0f,  1.0f);
-	glEnd();
 }
 
 void cPlayState::Render(CORE::cGame* game, float percent_tick)

@@ -9,22 +9,65 @@ using namespace ENTITY;
 enum State {
     JUMPING,
     IDLE,
-    THINKING
+    THINKING,
+    DEAD
 };
 
-const float RADIUS = 7.5f;
-const float Y_OFFSET = 15.0f;
+const float RADIUS = 5.0f;
+const float Y_OFFSET = 10.0f;
 
 const int LAT_RESOLUTION = 20;
 const int LONG_RESOLUTION = 20;
 
+cRedball::cRedball(cPlayState* ps, cQube* q, int startTick)
+       : _qube(q), _playState(ps), _executeStrategyThresh(1000), _ticksSinceExecuteStrategy(startTick)
+{
+    _x = _qube->getX();
+    _y = _qube->getY();
+    _z = _qube->getZ();
+    _color = Color(1.0f, 0.0f, 0.0f, 1.0f);
+    _state = IDLE;
+    srand(time(NULL));
+}
+
 void cRedball::update(CORE::cGame* game, float ticks)
 {
-    //don't do anything here; input should be in cPlayState (by design)
-    /*
-    if (game->GetInput().GetKeyState(SDLK_LEFT))
-        game->EndGame();
-        */
+    if (_state == DEAD)
+        return;
+
+    if (ticks - _ticksSinceExecuteStrategy >= _executeStrategyThresh)
+    {
+        //move somewhere
+        int r = rand() % 2;
+        if (r == 0 && (_qube->getJ() - 1 > 0 || _qube->getJ() == 0)) //left
+        {
+            move(0, -1);
+        }
+        else if (_qube->getI() + 1 < 6 || _qube->getI() == 6)        //right
+        {
+            move(1, 0);
+        }
+        _ticksSinceExecuteStrategy = ticks;
+    }
+}
+
+void cRedball::move(int i, int k)
+{
+    _qube = _playState->GetQubeAt(_qube->getI() + i, _qube->getK() + k);
+
+    if (_qube == 0) //death!
+    {
+        cout << "red ball death!" << endl;
+        _playState->Remove(this);
+        _state = DEAD;
+        return;
+    }
+
+    _x = _qube->getX();
+    _y = _qube->getY();
+    _z = _qube->getZ();
+
+    _qube->activate();
 }
 
 void cRedball::render(float ticks)
