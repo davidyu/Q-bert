@@ -500,14 +500,14 @@
 	"STATE_cGameStateManager.hpp"
 	"cGenericFactory.hpp"
 
-1335597077 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
+1335634129 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
 	<SDL2/SDL_opengl.h>
 	"QBRT_cPlayState.hpp"
 	"STATE_iGameState.hpp"
 	"QCORE_cQGame.hpp"
 	"GFX_cTexture.hpp"
 
-1335597119 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cPlayState.hpp
+1335597156 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cPlayState.hpp
 	<vector>
 	<map>
 	<utility>
@@ -517,10 +517,9 @@
 	"ENTITY_cQubert.hpp"
 	"ENTITY_cRedball.hpp"
 	"QBRT_cGameOverState.hpp"
-	"STATE_cGameStateManager.hpp"
 	<iostream>
 
-1335597057 source:/home/accts/ly58/cs478/final/Q-bert/src/QCORE_cQGame.cpp
+1335598202 source:/home/accts/ly58/cs478/final/Q-bert/src/QCORE_cQGame.cpp
 	<SDL2/SDL_opengl.h>
 	<SDL2/SDL_image.h>
 	"QCORE_cQGame.hpp"

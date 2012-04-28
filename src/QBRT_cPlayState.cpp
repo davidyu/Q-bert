@@ -178,8 +178,7 @@ void cPlayState::Update(CORE::cGame* game, float delta)
         STATE::cGameStateManager m = game->GetStateManager();
         cGenericFactory<STATE::iGameState> f = game->GetStateFactory();
 
-        //f.RegisterClass("game_win", cGameOverState::CreateInstance);
-        m.PushState(f.CreateObject("game"));
+        m.PushState(f.CreateObject("game_win"));
     }
 
     //qubert movement logic
@@ -195,8 +194,10 @@ void cPlayState::Update(CORE::cGame* game, float delta)
     else if (game->GetInput().OnKeyDown(HAR_UP))
         _qubert->move(0,1);
 
+/* pause
     if (game->GetInput().GetKeyState(HAR_p))
         game->
+*/
 
     //cout << _lastEnemyGenTick << endl;
     //add new enemies
