@@ -13,14 +13,9 @@ enum State {
     DEAD
 };
 
-const float RADIUS = 5.0f;
-const float Y_OFFSET = 10.0f;
-
-const int LAT_RESOLUTION = 20;
-const int LONG_RESOLUTION = 20;
-
 cRedball::cRedball(cPlayState* ps, cQube* q, int startTick)
-       : _qube(q), _playState(ps), _executeStrategyThresh(1000), _ticksSinceExecuteStrategy(startTick)
+       : _qube(q), _playState(ps), _executeStrategyThresh(1000), _ticksSinceExecuteStrategy(startTick),
+         RADIUS(5.0f), Y_OFFSET(10.0f), LAT_RESOLUTION(20), LONG_RESOLUTION(20)
 {
     _x = _qube->getX();
     _y = _qube->getY();
@@ -57,7 +52,7 @@ void cRedball::move(int i, int k)
 
     if (_qube == 0) //death!
     {
-        cout << "red ball death!" << endl;
+        cout << "a red ball just fell to the abyss!" << endl;
         _playState->Remove(this);
         _state = DEAD;
         return;

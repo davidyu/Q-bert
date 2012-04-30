@@ -500,14 +500,14 @@
 	"STATE_cGameStateManager.hpp"
 	"cGenericFactory.hpp"
 
-1335753624 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
+1335767387 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
 	<SDL2/SDL_opengl.h>
 	"QBRT_cPlayState.hpp"
 	"STATE_iGameState.hpp"
 	"QCORE_cQGame.hpp"
 	"GFX_cTexture.hpp"
 
-1335647376 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cPlayState.hpp
+1335763173 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cPlayState.hpp
 	<vector>
 	<map>
 	<utility>
@@ -545,23 +545,29 @@
 1335596000 /home/accts/ly58/cs478/final/Spice/include/GFX_cTextureWrapper.hpp
 	<SDL2/SDL_opengl.h>
 
-1335593542 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQubert.cpp
+1335769643 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQubert.cpp
 	"ENTITY_cQubert.hpp"
 	<cmath>
 	"QCORE_cQGame.hpp"
+	"GFX_cImage.hpp"
+	"GFX_cTexture.hpp"
+	"GFX_G2D_cTextureRegion.hpp"
+	"GFX_cTextureRegistry.hpp"
+	"GFX_G2D_cAnimation.hpp"
+	"GFX_GfxHelper.hpp"
 
-1335593827 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cQubert.hpp
+1335764069 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cQubert.hpp
 	<SDL2/SDL_opengl.h>
 	"Color.hpp"
 	"ENTITY_cEntity.hpp"
 	"ENTITY_cQube.hpp"
 	"QBRT_cPlayState.hpp"
 
-1335644659 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cRedball.cpp
+1335758816 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cRedball.cpp
 	"ENTITY_cRedball.hpp"
 	<cmath>
 
-1335586123 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cRedball.hpp
+1335757851 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cRedball.hpp
 	<SDL2/SDL_opengl.h>
 	"Color.hpp"
 	"ENTITY_cEntity.hpp"
@@ -571,7 +577,7 @@
 1335641948 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cGameOverState.hpp
 	"STATE_iGameState.hpp"
 
-1335646888 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cGameOverState.cpp
+1335766499 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cGameOverState.cpp
 	<SDL2/SDL_opengl.h>
 	"QCORE_cQGame.hpp"
 	"QBRT_cGameOverState.hpp"
@@ -593,11 +599,11 @@
 	<vector>
 	"MATH_MathHelper.hpp"
 
-1335645146 /home/accts/ly58/cs478/final/Spice/include/GFX_GfxHelper.hpp
+1335769853 /home/accts/ly58/cs478/final/Spice/include/GFX_GfxHelper.hpp
 	<SDL2/SDL_opengl.h>
 	"GFX_cTextureWrapper.hpp"
 
-1335754343 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cMenuState.cpp
+1335754648 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cMenuState.cpp
 	<SDL2/SDL_opengl.h>
 	"QCORE_cQGame.hpp"
 	"QBRT_cMenuState.hpp"

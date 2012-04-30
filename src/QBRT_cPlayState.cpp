@@ -15,7 +15,7 @@ float camera_x, camera_y, camera_z;
 float rot_x, rot_y, rot_z;
 
 cPlayState::cPlayState()
-           :_addEnemyThresh(3000), _lastEnemyGenTick(0)
+           :_addEnemyThresh(3000), _lastEnemyGenTick(-1), _qubertIsDead(false)
 {
 }
 
@@ -127,6 +127,7 @@ void cPlayState::addEnemy(float now)
 
     cRedball* rb = new cRedball(this, startingQube, (int)now);
     entities.push_back(rb);
+    enemies.push_back(rb);
 }
 
 ENTITY::cQube* cPlayState::GetQubeAt(int i, int j)
@@ -149,9 +150,32 @@ ENTITY::cQube* cPlayState::GetQubeAt(int i, int j)
         return 0;
 }
 
+//deletes all enemies and puts qubert at the top of the pyramid
+void cPlayState::Restart()
+{
+    using std::vector;
+    using ENTITY::cEntity;
+    for(vector<cEntity*>::iterator eit = enemies.begin(); eit != enemies.end(); ++eit)
+    {
+        cEntity* e = *eit;
+        //O(n^2) linear search; find the enemy in the larger entities vector and remove him.
+        for(vector<cEntity*>::iterator it = entities.begin(); it != entities.end(); ++it)
+        {
+            cEntity* ee = *it;
+            if (ee == e)
+            {
+                delete e;
+                entities.erase(it);
+                break;
+            }
+        }
+    }
+    enemies.clear();
+    _qubertIsDead = false;
+}
+
 void cPlayState::Remove(ENTITY::cEntity* e) //removes entity
 {
-
 
 }
 
@@ -172,6 +196,7 @@ bool cPlayState::OnExit()
     }
 
     entities.clear();
+    enemies.clear();
 }
 
 void cPlayState::Pause() {}
@@ -179,10 +204,33 @@ void cPlayState::Resume() {}
 
 void cPlayState::Update(CORE::cGame* game, float delta)
 {
-    //qubert movement logic
     if (game->GetInput().GetKeyState(HAR_ESCAPE))
         game->EndGame();
 
+    if (_qubertIsDead) //only update qubert
+    {
+        _qubert->update(game, delta);
+        return; //temporarily stop updating everything else
+    }
+
+    //collision detection logic
+    using ENTITY::cQube;
+    using ENTITY::cRedball;
+    using std::vector;
+    using ENTITY::cEntity;
+
+    cQube* c = _qubert->getQube();
+    for(vector<cEntity*>::iterator eit = enemies.begin(); eit != enemies.end(); ++eit)
+    {
+        cRedball* e = (cRedball*) *eit;
+        if (e->getQube() == c)
+        {
+            _qubert->handleCollision(delta);
+            _qubertIsDead = true;
+        }
+    }
+
+    //qubert movement logic
     if (game->GetInput().OnKeyDown(HAR_LEFT))
         _qubert->move(-1,0);
     else if (game->GetInput().OnKeyDown(HAR_DOWN))
@@ -197,8 +245,10 @@ void cPlayState::Update(CORE::cGame* game, float delta)
         game->
 */
 
-    //cout << _lastEnemyGenTick << endl;
     //add new enemies
+    if (_lastEnemyGenTick < 0)
+        _lastEnemyGenTick = (int) delta;
+
     if (delta - _lastEnemyGenTick >= _addEnemyThresh)
     {
         addEnemy(delta);

@@ -21,10 +21,19 @@ namespace ENTITY
             virtual void update(CORE::cGame* game, float ticks);
 
             void move(int i, int k);
+            void handleCollision(float ticks);
+
+            cQube* getQube() { return _qube; } ;
 
         private:
             cQube*      _qube; //which qube am I standing on?
             cPlayState* _playState;
+
+            const int DEATH_COOLDOWN;
+
+
+            int m_state;
+            int m_tickAtDeath;
 
             Color  _color;
 

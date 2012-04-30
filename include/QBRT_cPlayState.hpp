@@ -55,18 +55,22 @@ class cPlayState : public STATE::iGameState
 
         void ReportQubertDeath();
 
+        void Restart();
+
         ENTITY::cQube* GetQubeAt(int i, int j);
         ENTITY::cQube* GetDefaultQube() { return _defaultQube; };
 
     private:
         map<pair<int, int>, vector<ENTITY::cQube*>*> qubes;
         vector<ENTITY::cEntity*> entities;
+        vector<ENTITY::cEntity*> enemies;
         ENTITY::cQubert*  _qubert;
         ENTITY::cQube*    _defaultQube;
 
         const int _addEnemyThresh;
         int       _lastEnemyGenTick;
-        int       _qubertLives;
+        int       _qubertLives;   //how many lives does qubert have? Not "qubert is alive!"
+        bool      _qubertIsDead;
 
         void loadLevel();
         void addQubert();

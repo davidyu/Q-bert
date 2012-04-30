@@ -1,6 +1,7 @@
 #include <SDL2/SDL_opengl.h>
 #include "QCORE_cQGame.hpp"
 #include "QBRT_cGameOverState.hpp"
+
 #include "GFX_cTextureRegistry.hpp"
 #include "GFX_cImage.hpp"
 #include "GFX_cTexture.hpp"
