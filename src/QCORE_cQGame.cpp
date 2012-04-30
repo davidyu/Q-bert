@@ -4,6 +4,7 @@
 #include "STATE_iGameState.hpp"
 #include "QBRT_cPlayState.hpp"
 #include "QBRT_cGameOverState.hpp"
+#include "QBRT_cMenuState.hpp"
 
 
 
@@ -78,8 +79,9 @@ bool cGame::Initialise()
     m_input.Initialise();
 
     state_factory.RegisterClass("game", cPlayState::CreateInstance); //this is where we push instances of game states
+    state_factory.RegisterClass("menu", cMenuState::CreateInstance);
     state_factory.RegisterClass("game_over", cGameOverState::CreateInstance);
-    m_state_manager.PushState(state_factory.CreateObject("game"));
+    m_state_manager.PushState(state_factory.CreateObject("menu"));
 
     m_timer.Start();
 

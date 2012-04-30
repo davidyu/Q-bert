@@ -20,13 +20,13 @@
 		<Cursor position="32" topLine="0" />
 	</File>
 	<File name="include/QBRT_cGameOverState.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="573" topLine="0" />
+		<Cursor position="147" topLine="0" />
 	</File>
-	<File name="include/QBRT_cPlayState.hpp" open="1" top="0" tabpos="4">
-		<Cursor position="291" topLine="0" />
+	<File name="include/QBRT_cPlayState.hpp" open="1" top="0" tabpos="2">
+		<Cursor position="1719" topLine="18" />
 	</File>
-	<File name="include/QCORE_cQGame.hpp" open="1" top="0" tabpos="3">
-		<Cursor position="848" topLine="0" />
+	<File name="include/QCORE_cQGame.hpp" open="0" top="0" tabpos="3">
+		<Cursor position="1238" topLine="0" />
 	</File>
 	<File name="main.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="518" topLine="0" />
@@ -35,7 +35,7 @@
 		<Cursor position="272" topLine="0" />
 	</File>
 	<File name="src/ENTITY_cEntity.cpp" open="0" top="0" tabpos="10">
-		<Cursor position="194" topLine="0" />
+		<Cursor position="10" topLine="0" />
 	</File>
 	<File name="src/ENTITY_cQube.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="927" topLine="0" />
@@ -44,19 +44,19 @@
 		<Cursor position="295" topLine="0" />
 	</File>
 	<File name="src/ENTITY_cRedball.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="1283" topLine="0" />
+		<Cursor position="1235" topLine="36" />
 	</File>
 	<File name="src/GFX_cCamera.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="1" topLine="0" />
 	</File>
-	<File name="src/QBRT_cGameOverState.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="118" topLine="0" />
+	<File name="src/QBRT_cGameOverState.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="432" topLine="0" />
 	</File>
-	<File name="src/QBRT_cPlayState.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="4619" topLine="152" />
+	<File name="src/QBRT_cPlayState.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="169" topLine="0" />
 	</File>
-	<File name="src/QCORE_cQGame.cpp" open="1" top="1" tabpos="2">
-		<Cursor position="1483" topLine="59" />
+	<File name="src/QCORE_cQGame.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="1044" topLine="106" />
 	</File>
 	<File name="../Spice/src/CORE_cSDLState.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="1246" topLine="0" />
@@ -66,5 +66,11 @@
 	</File>
 	<File name="../Spice/src/GFX_cCameraBase.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="151" topLine="0" />
+	</File>
+	<File name="../Spice/src/GFX_cTexture.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1601" topLine="5" />
+	</File>
+	<File name="../Spice/src/STATE_cGameStateManager.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="230" topLine="58" />
 	</File>
 </CodeBlocks_layout_file>

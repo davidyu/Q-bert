@@ -4,8 +4,6 @@
 #include "QCORE_cQGame.hpp"
 #include "GFX_cTexture.hpp"
 
-#define SHADED_CUBE
-
 /*temp*/ #include <iostream>
          using namespace std;
 
@@ -39,26 +37,16 @@ bool cPlayState::OnEnter()
     cout << "new game" << endl;
     loadLevel();
     addQubert();
-    resetSDLView();
+    resetSDLView(); //need to reenable depth and ortho view after game over
 }
 
 void cPlayState::resetSDLView()
 {
-    cout << "reset called" << endl;
-    glEnable(GL_TEXTURE_2D);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-
     glOrtho(-100.0f, 100.0f, -100.0f, 100.0f, -500.0f, 500.0f);
 
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    glClearDepth(1.0f);
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     glShadeModel(GL_SMOOTH);
-
-    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);          // Really Nice Perspective
 }
 
 void cPlayState::loadLevel()
