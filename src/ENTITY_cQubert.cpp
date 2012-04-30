@@ -50,7 +50,10 @@ cQubert::cQubert(cPlayState* ps)
     _x = _qube->getX();
     _y = _qube->getY();
     _z = _qube->getZ();
-    _qube->activate();
+
+    if (_qube->activate())
+        ps->ReportQubeActivation();
+
     _color = Color(QBERT_R, QBERT_G, QBERT_B, 1.0f);
 }
 
@@ -61,7 +64,8 @@ cQubert::cQubert(cPlayState* ps, cQube* q)
     _x = _qube->getX();
     _y = _qube->getY();
     _z = _qube->getZ();
-    _qube->activate();
+    if (_qube->activate())
+        ps->ReportQubeActivation();
     _color = Color(QBERT_R, QBERT_G, QBERT_B, 1.0f);
 }
 
@@ -87,7 +91,8 @@ void cQubert::move(int i, int k)
     _y = _qube->getY();
     _z = _qube->getZ();
 
-    _qube->activate();
+    if (_qube->activate())
+        _playState->ReportQubeActivation();
 }
 
 void cQubert::handleCollision(float ticks)

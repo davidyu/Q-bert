@@ -18,3 +18,9 @@ Color::~Color()
 {
     //dtor
 }
+
+bool Color::operator==(const Color &other) const {
+    if (_r == other.getR() && _g == other.getG() && _b == other.getB())
+        return true;
+    return false;
+}

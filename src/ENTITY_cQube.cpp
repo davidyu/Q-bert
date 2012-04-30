@@ -23,9 +23,13 @@ cQube::cQube(float x, float y, float z, float w, float d, float h, int i, int j,
 
 void cQube::update(CORE::cGame* game, float ticks) {}
 
-void cQube::activate()
+bool cQube::activate()
 {
+    if (_up == _activated)
+        return false;
+
     _up = _activated;
+    return true;
 }
 
 void cQube::render(float ticks)
@@ -36,7 +40,9 @@ void cQube::render(float ticks)
 
     //up face
     glBegin(GL_QUADS);
-    glColor3f(_up.getR(), _up.getG(), _up.getB());
+    extern float multiplier;
+    //std::cout << multiplier << std::endl;
+    glColor3f(_up.getR() * multiplier, _up.getG() * multiplier, _up.getB() * multiplier);
     glVertex3f(_width/2, _height/2, -_depth/2);         // Top Right Of The Quad (Top)
     glVertex3f(-_width/2, _height/2, -_depth/2);        // Top Left Of The Quad (Top)
     glVertex3f(-_width/2, _height/2, _depth/2);         // Bottom Left Of The Quad (Top)

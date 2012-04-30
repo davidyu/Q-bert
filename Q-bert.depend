@@ -421,7 +421,7 @@
 	<SDL2/SDL_opengl.h>
 	<cassert>
 
-1335646389 source:/home/accts/ly58/cs478/final/Spice/src/GFX_cTexture.cpp
+1335770120 source:/home/accts/ly58/cs478/final/Spice/src/GFX_cTexture.cpp
 	"GFX_cTexture.hpp"
 	"GFX_cImage.hpp"
 	<GL/glu.h>
@@ -472,12 +472,12 @@
 1334953862 /home/accts/ly58/cs478/final/Spice/include/GFX_cTextureMesh.hpp
 	<vector>
 
-1335582066 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQube.cpp
+1335772966 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQube.cpp
 	"ENTITY_cQube.hpp"
 	<vector>
 	<iostream>
 
-1335549676 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cQube.hpp
+1335772288 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cQube.hpp
 	<vector>
 	<SDL2/SDL_opengl.h>
 	"Color.hpp"
@@ -500,14 +500,15 @@
 	"STATE_cGameStateManager.hpp"
 	"cGenericFactory.hpp"
 
-1335767387 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
+1335772933 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
 	<SDL2/SDL_opengl.h>
 	"QBRT_cPlayState.hpp"
 	"STATE_iGameState.hpp"
 	"QCORE_cQGame.hpp"
 	"GFX_cTexture.hpp"
+	<cmath>
 
-1335763173 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cPlayState.hpp
+1335772046 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cPlayState.hpp
 	<vector>
 	<map>
 	<utility>
@@ -530,10 +531,10 @@
 	<cassert>
 	<stdlib.h>
 
-1334632057 source:/home/accts/ly58/cs478/final/Q-bert/src/Color.cpp
+1335772457 source:/home/accts/ly58/cs478/final/Q-bert/src/Color.cpp
 	"Color.hpp"
 
-1334632041 /home/accts/ly58/cs478/final/Q-bert/include/Color.hpp
+1335772503 /home/accts/ly58/cs478/final/Q-bert/include/Color.hpp
 
 1335549699 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cEntity.cpp
 	"ENTITY_cEntity.hpp"
@@ -545,7 +546,7 @@
 1335596000 /home/accts/ly58/cs478/final/Spice/include/GFX_cTextureWrapper.hpp
 	<SDL2/SDL_opengl.h>
 
-1335769643 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQubert.cpp
+1335772602 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQubert.cpp
 	"ENTITY_cQubert.hpp"
 	<cmath>
 	"QCORE_cQGame.hpp"

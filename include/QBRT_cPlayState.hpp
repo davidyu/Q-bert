@@ -54,6 +54,7 @@ class cPlayState : public STATE::iGameState
         void Remove(ENTITY::cEntity* e); //removes entity
 
         void ReportQubertDeath();
+        void ReportQubeActivation();
 
         void Restart();
 
@@ -70,7 +71,12 @@ class cPlayState : public STATE::iGameState
         const int _addEnemyThresh;
         int       _lastEnemyGenTick;
         int       _qubertLives;   //how many lives does qubert have? Not "qubert is alive!"
-        bool      _qubertIsDead;
+        int       _qubertGameState;
+
+        int _qubesActivated;
+        int _tickAtVictory;
+
+        const int CELEBRATION_THRESHOLD;
 
         void loadLevel();
         void addQubert();

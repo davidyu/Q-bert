@@ -27,7 +27,7 @@ namespace ENTITY
             int   getJ() { return _j; };
             int   getK() { return _k; };
 
-            void activate();
+            bool activate();
 
         protected:
 

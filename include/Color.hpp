@@ -17,6 +17,8 @@ class Color
         void setB(float val) { _b = val; }
         float getA() const { return _a; }
         void setA(float val) { _a = val; }
+
+        bool operator==(const Color &other) const;
     protected:
     private:
         float _r;

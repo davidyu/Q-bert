@@ -3,6 +3,7 @@
 #include "STATE_iGameState.hpp"
 #include "QCORE_cQGame.hpp"
 #include "GFX_cTexture.hpp"
+#include <cmath>
 
 /*temp*/ #include <iostream>
          using namespace std;
@@ -14,8 +15,16 @@ using namespace STATE;
 float camera_x, camera_y, camera_z;
 float rot_x, rot_y, rot_z;
 
+float multiplier = 1.0f;
+
+enum QubertGameState {
+    QUBERT_HAS_WON,
+    QUBERT_IS_DYING,
+    QUBERT_IS_FINE
+};
+
 cPlayState::cPlayState()
-           :_addEnemyThresh(3000), _lastEnemyGenTick(-1), _qubertIsDead(false)
+           :_addEnemyThresh(3000), _lastEnemyGenTick(-1), _qubertGameState(QUBERT_IS_FINE), CELEBRATION_THRESHOLD(2000)
 {
 }
 
@@ -100,6 +109,8 @@ void cPlayState::loadLevel()
         }
     }
 
+    _qubesActivated = 0;
+
     camera_x = 0; camera_y = 7 * cube_height; camera_z = 6 * cube_depth;
     _defaultQube = GetQubeAt(0, 6);
 
@@ -171,7 +182,7 @@ void cPlayState::Restart()
         }
     }
     enemies.clear();
-    _qubertIsDead = false;
+    _qubertGameState = QUBERT_IS_FINE;
 }
 
 void cPlayState::Remove(ENTITY::cEntity* e) //removes entity
@@ -182,6 +193,16 @@ void cPlayState::Remove(ENTITY::cEntity* e) //removes entity
 void cPlayState::ReportQubertDeath()
 {
     _qubertLives--;
+}
+
+void cPlayState::ReportQubeActivation()
+{
+    _qubesActivated++;
+    if (_qubesActivated >= qubes.size())
+    {
+        _qubertGameState = QUBERT_HAS_WON;
+        _tickAtVictory = -1;
+    }
 }
 
 bool cPlayState::OnExit()
@@ -207,10 +228,25 @@ void cPlayState::Update(CORE::cGame* game, float delta)
     if (game->GetInput().GetKeyState(HAR_ESCAPE))
         game->EndGame();
 
-    if (_qubertIsDead) //only update qubert
+    if (_qubertGameState == QUBERT_IS_DYING) //only update qubert
     {
         _qubert->update(game, delta);
         return; //temporarily stop updating everything else
+    }
+    else if (_qubertGameState == QUBERT_HAS_WON) //celebrate!
+    {
+        if (_tickAtVictory < 0)
+            _tickAtVictory = (int) delta;
+
+        multiplier = 0.3 * sin(0.01 * delta) + 0.7;
+
+        if ((int) delta - _tickAtVictory >= CELEBRATION_THRESHOLD) //reset game
+        {
+            multiplier = 1.0f; //reset to eliminate global varibale artifacting
+            game->GetStateManager().ReplaceState(game->state_factory.CreateObject("game"));
+        }
+
+        return;
     }
 
     //collision detection logic
@@ -226,7 +262,7 @@ void cPlayState::Update(CORE::cGame* game, float delta)
         if (e->getQube() == c)
         {
             _qubert->handleCollision(delta);
-            _qubertIsDead = true;
+            _qubertGameState = QUBERT_IS_DYING;
         }
     }
 
@@ -240,10 +276,10 @@ void cPlayState::Update(CORE::cGame* game, float delta)
     else if (game->GetInput().OnKeyDown(HAR_UP))
         _qubert->move(0,1);
 
-/* pause
-    if (game->GetInput().GetKeyState(HAR_p))
-        game->
-*/
+    /* pause
+        if (game->GetInput().GetKeyState(HAR_p))
+            game->
+    */
 
     //add new enemies
     if (_lastEnemyGenTick < 0)
