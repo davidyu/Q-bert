@@ -500,15 +500,16 @@
 	"STATE_cGameStateManager.hpp"
 	"cGenericFactory.hpp"
 
-1335772933 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
+1335836650 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
 	<SDL2/SDL_opengl.h>
 	"QBRT_cPlayState.hpp"
 	"STATE_iGameState.hpp"
 	"QCORE_cQGame.hpp"
 	"GFX_cTexture.hpp"
+	"QBRT_cPauseState.hpp"
 	<cmath>
 
-1335772046 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cPlayState.hpp
+1335835912 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cPlayState.hpp
 	<vector>
 	<map>
 	<utility>
@@ -520,7 +521,7 @@
 	"QBRT_cGameOverState.hpp"
 	<iostream>
 
-1335754387 source:/home/accts/ly58/cs478/final/Q-bert/src/QCORE_cQGame.cpp
+1335833666 source:/home/accts/ly58/cs478/final/Q-bert/src/QCORE_cQGame.cpp
 	<SDL2/SDL_opengl.h>
 	<SDL2/SDL_image.h>
 	"QCORE_cQGame.hpp"
@@ -617,4 +618,19 @@
 1335754495 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cMenuState.hpp
 	"STATE_iGameState.hpp"
 	"GFX_cTexture.hpp"
+
+1335836318 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPauseState.cpp
+	<SDL2/SDL_opengl.h>
+	"QCORE_cQGame.hpp"
+	"QBRT_cPauseState.hpp"
+	"GFX_cTextureRegistry.hpp"
+	"GFX_cImage.hpp"
+	"GFX_G2D_cAnimation.hpp"
+	"GFX_G2D_cTextureRegion.hpp"
+	"GFX_GfxHelper.hpp"
+
+1335835482 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cPauseState.hpp
+	"STATE_iGameState.hpp"
+	"GFX_cTexture.hpp"
+	"QBRT_cPlayState.hpp"
 

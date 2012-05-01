@@ -58,8 +58,12 @@ class cPlayState : public STATE::iGameState
 
         void Restart();
 
+        void MoveCamera(float xrot, float yrot);
+
         ENTITY::cQube* GetQubeAt(int i, int j);
         ENTITY::cQube* GetDefaultQube() { return _defaultQube; };
+
+        void resetSDLView(); //chagne this
 
     private:
         map<pair<int, int>, vector<ENTITY::cQube*>*> qubes;
@@ -76,12 +80,15 @@ class cPlayState : public STATE::iGameState
         int _qubesActivated;
         int _tickAtVictory;
 
+        float m_yTheta;
+        float m_xTheta;
+
         const int CELEBRATION_THRESHOLD;
 
         void loadLevel();
         void addQubert();
         void addEnemy(float now);
-        void resetSDLView();
+
 
     protected:
 

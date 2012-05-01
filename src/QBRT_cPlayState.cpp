@@ -3,6 +3,7 @@
 #include "STATE_iGameState.hpp"
 #include "QCORE_cQGame.hpp"
 #include "GFX_cTexture.hpp"
+#include "QBRT_cPauseState.hpp"
 #include <cmath>
 
 /*temp*/ #include <iostream>
@@ -23,8 +24,9 @@ enum QubertGameState {
     QUBERT_IS_FINE
 };
 
-cPlayState::cPlayState()
-           :_addEnemyThresh(3000), _lastEnemyGenTick(-1), _qubertGameState(QUBERT_IS_FINE), CELEBRATION_THRESHOLD(2000)
+cPlayState:: cPlayState()
+           : m_xTheta(0), m_yTheta(0), _addEnemyThresh(3000), _lastEnemyGenTick(-1), _qubertGameState(QUBERT_IS_FINE),
+             CELEBRATION_THRESHOLD(2000)
 {
 }
 
@@ -185,6 +187,12 @@ void cPlayState::Restart()
     _qubertGameState = QUBERT_IS_FINE;
 }
 
+void cPlayState::MoveCamera(float xrot, float yrot)
+{
+    m_xTheta = xrot;
+    m_yTheta = yrot;
+}
+
 void cPlayState::Remove(ENTITY::cEntity* e) //removes entity
 {
 
@@ -221,7 +229,10 @@ bool cPlayState::OnExit()
 }
 
 void cPlayState::Pause() {}
-void cPlayState::Resume() {}
+void cPlayState::Resume()
+{
+    resetSDLView();
+}
 
 void cPlayState::Update(CORE::cGame* game, float delta)
 {
@@ -276,10 +287,8 @@ void cPlayState::Update(CORE::cGame* game, float delta)
     else if (game->GetInput().OnKeyDown(HAR_UP))
         _qubert->move(0,1);
 
-    /* pause
-        if (game->GetInput().GetKeyState(HAR_p))
-            game->
-    */
+    if (game->GetInput().OnKeyDown(HAR_p))
+        game->GetStateManager().PushState(new cPauseState(this));
 
     //add new enemies
     if (_lastEnemyGenTick < 0)
@@ -306,11 +315,23 @@ void cPlayState::Update(CORE::cGame* game, float delta)
 
 void cPlayState::Render(CORE::cGame* game, float percent_tick)
 {
-    SDL_Rect viewport, temp_rect;
-    SDL_Renderer* renderer = game->GetRenderer();
-    SDL_RenderGetViewport(renderer, &viewport);
+    glLoadIdentity();
+    glOrtho(-100.0f, 100.0f, -100.0f, 100.0f, -500.0f, 500.0f);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
 
-    SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);
+    //change camera to right place
+    glRotatef(30.0, 1,0,0);
+    glRotatef(45.0, 0,1,0); //usually -45 by convention, but Q*BERT wants 45
+
+    glRotatef(-m_xTheta, 0, 1, 0);
+    glRotatef(-m_yTheta, 1, 0, 0);
+
+    GLfloat xtrans = -camera_x;
+    GLfloat ytrans = -camera_y;
+    GLfloat ztrans = -camera_z;
+
+    glTranslatef(xtrans, ytrans, ztrans);
 
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -323,19 +344,8 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
         e->render(percent_tick);
     }
 
-   //start with camera
-    GLfloat xtrans = -camera_x;
-    GLfloat ytrans = -camera_y;
-    GLfloat ztrans = -camera_z;
-
-    glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-
-
-    //isometric view!
-    glRotatef(30.0, 1,0,0);
-    glRotatef(45.0, 0,1,0); //usually -45 by convention, but Q*BERT wants 45
-    glTranslatef(xtrans, ytrans, ztrans);
+    glMatrixMode(GL_PROJECTION);
 }
 
 void cPlayState::HandleInput() {}

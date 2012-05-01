@@ -131,12 +131,18 @@ void cGame::MainLoop()
         /*DEBUG*/assert(state!=0);
         state->Update(this, ticks);
 
+
         //clear screen - good to do generally
         //glClearColor(0.0, 0.0, 0.0, 1.0);
         //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         //SDL_GL_MakeCurrent(m_sdl_state->window, m_sdl_state->glctx);
 
         state = m_state_manager.GetCurrent();
+        SDL_Rect viewport, temp_rect;
+        SDL_Renderer* renderer = GetRenderer();
+        SDL_RenderGetViewport(renderer, &viewport);
+
+        SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);
         /*
         if (m_state_manager.GetCurrent() == state) //if pushed/replaced state, just do it all over
         {*/
