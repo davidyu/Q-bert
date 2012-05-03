@@ -14,8 +14,8 @@ enum State {
 };
 
 cRedball::cRedball(cPlayState* ps, cQube* q, int startTick)
-       : _qube(q), _playState(ps), _executeStrategyThresh(1000), _ticksSinceExecuteStrategy(startTick),
-         RADIUS(5.0f), Y_OFFSET(10.0f), LAT_RESOLUTION(20), LONG_RESOLUTION(20)
+       : _spline(0), _qube(q), _playState(ps), _executeStrategyThresh(1000), _ticksSinceExecuteStrategy(startTick),
+         RADIUS(5.0f), Y_OFFSET(10.0f), LAT_RESOLUTION(20), LONG_RESOLUTION(20), JUMP_TIME(500)
 {
     _x = _qube->getX();
     _y = _qube->getY();
@@ -25,12 +25,82 @@ cRedball::cRedball(cPlayState* ps, cQube* q, int startTick)
     srand(time(NULL));
 }
 
+void cRedball::move(int i, int k)
+{
+    cQube* nQ = _playState->GetQubeAt(_qube->getI() + i, _qube->getK() + k);
+
+    if (nQ == 0) //death!
+    {
+        cout << "a red ball just fell into the abyss!" << endl;
+        _state = DEAD;
+        _playState->Remove(this);
+        return;
+    }
+
+    float nx = nQ->getX();
+    float ny = nQ->getY();
+    float nz = nQ->getZ();
+
+    float dx = nx - _x,
+          dy = ny - _y,
+          dz = nz - _z;
+
+    using MATH::Vec3f;
+
+    const int JUMP_HEIGHT = 2.0;
+    Vec3f p0(_x, _y, _z);
+    Vec3f p1(nx, ny, nz);
+    Vec3f p1_p0 = p1 - p0;
+    p1_p0.Normalize();
+    Vec3f p0p(p1_p0.x, 50, p1_p0.z);
+    Vec3f p1p(p1_p0.x, -50, p1_p0.z);
+
+    _nextQube = nQ;
+    _qube = 0;
+
+    if (_spline != 0)
+        delete _spline;
+
+    using MATH::Spline;
+    _spline = new Spline(p0, p1, p0p, p1p);
+    _state = JUMPING;
+    m_tickAtJumpGather = -1;
+}
+
 void cRedball::update(CORE::cGame* game, float ticks)
 {
     if (_state == DEAD)
         return;
+    else if (_state == JUMPING)
+    {
+        if (m_tickAtJumpGather < 0)
+            m_tickAtJumpGather = ticks;
 
-    if (ticks - _ticksSinceExecuteStrategy >= _executeStrategyThresh)
+        float u = (ticks - m_tickAtJumpGather) / JUMP_TIME;
+
+        if (u >= 1)
+        {
+            _qube = _nextQube;
+
+            if (_qube == 0)
+                return; //DEAD!
+
+            _x = _qube->getX();
+            _y = _qube->getY();
+            _z = _qube->getZ();
+
+            _state = IDLE;
+            return;
+        }
+
+        using MATH::Vec3f;
+        Vec3f pos = _spline->getPosHermite(u);
+
+        _x = pos.x;
+        _y = pos.y;
+        _z = pos.z;
+    }
+    else if (_state == IDLE && (ticks - _ticksSinceExecuteStrategy >= _executeStrategyThresh))
     {
         //move somewhere
         int r = rand() % 2;
@@ -44,25 +114,6 @@ void cRedball::update(CORE::cGame* game, float ticks)
         }
         _ticksSinceExecuteStrategy = ticks;
     }
-}
-
-void cRedball::move(int i, int k)
-{
-    _qube = _playState->GetQubeAt(_qube->getI() + i, _qube->getK() + k);
-
-    if (_qube == 0) //death!
-    {
-        cout << "a red ball just fell to the abyss!" << endl;
-        _playState->Remove(this);
-        _state = DEAD;
-        return;
-    }
-
-    _x = _qube->getX();
-    _y = _qube->getY();
-    _z = _qube->getZ();
-
-    //_qube->activate();
 }
 
 void cRedball::render(float ticks)

@@ -195,7 +195,28 @@ void cPlayState::MoveCamera(float xrot, float yrot)
 
 void cPlayState::Remove(ENTITY::cEntity* e) //removes entity
 {
+    using std::vector;
+    using ENTITY::cEntity;
+    for(vector<cEntity*>::iterator it = entities.begin(); it != entities.end(); ++it)
+    {
+        cEntity* ee = *it;
+        if (ee == e)
+        {
+            delete e;
+            entities.erase(it);
+            break;
+        }
+    }
 
+    for(vector<cEntity*>::iterator eit = enemies.begin(); eit != enemies.end(); ++eit)
+    {
+        cEntity* ee = *eit;
+        if (ee == e)
+        {
+            enemies.erase(eit);
+            break;
+        }
+    }
 }
 
 void cPlayState::ReportQubertDeath()
@@ -267,13 +288,16 @@ void cPlayState::Update(CORE::cGame* game, float delta)
     using ENTITY::cEntity;
 
     cQube* c = _qubert->getQube();
-    for(vector<cEntity*>::iterator eit = enemies.begin(); eit != enemies.end(); ++eit)
+    if (c != 0)
     {
-        cRedball* e = (cRedball*) *eit;
-        if (e->getQube() == c)
+        for(vector<cEntity*>::iterator eit = enemies.begin(); eit != enemies.end(); ++eit)
         {
-            _qubert->handleCollision(delta);
-            _qubertGameState = QUBERT_IS_DYING;
+            cRedball* e = (cRedball*) *eit;
+            if (e->getQube() == c)
+            {
+                _qubert->handleCollision(delta);
+                _qubertGameState = QUBERT_IS_DYING;
+            }
         }
     }
 

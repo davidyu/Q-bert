@@ -6,6 +6,7 @@
 #include "ENTITY_cEntity.hpp"
 #include "ENTITY_cQube.hpp"
 #include "QBRT_cPlayState.hpp"
+#include "MATH_Spline.hpp"
 
 class cPlayState;
 
@@ -24,11 +25,16 @@ namespace ENTITY
             //const int _fps;
 
             int       _ticksSinceExecuteStrategy;
+            int       m_tickAtJumpGather;
             const int _executeStrategyThresh;
+            const int JUMP_TIME;
             int       _state;
 
             cQube*      _qube;
+            cQube*      _nextQube;
             cPlayState* _playState;
+
+            MATH::Spline* _spline;
 
             Color  _color;
 

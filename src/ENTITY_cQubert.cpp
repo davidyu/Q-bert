@@ -78,8 +78,6 @@ void cQubert::move(int i, int k)
 
     cout << _qube->getI() + i << ", " << _qube->getK() + k << endl;
 
-    //map<pair<int, int>, vector<ENTITY::cQube*>*>::iterator it;
-
     cQube* nQ = _playState->GetQubeAt(_qube->getI() + i, _qube->getK() + k);
 
     if (nQ == 0) //death!
@@ -112,6 +110,7 @@ void cQubert::move(int i, int k)
     Vec3f p1p(p1_p0.x, -100, p1_p0.z);
 
     _nextQube = nQ;
+    _qube = 0;
 
     if (_spline != 0)
         delete _spline;
@@ -120,10 +119,6 @@ void cQubert::move(int i, int k)
     _spline = new Spline(p0, p1, p0p, p1p);
     m_state = JUMPING;
     m_tickAtJumpGather = -1;
-
-    //_x = _qube->getX();
-    //_y = _qube->getY();
-    //_z = _qube->getZ();
 }
 
 void cQubert::handleCollision(float ticks)
@@ -152,6 +147,7 @@ void cQubert::update(CORE::cGame* game, float ticks)
             m_tickAtJumpGather = ticks;
 
         float u = (ticks - m_tickAtJumpGather) / JUMP_TIME;
+
         if (u >= 1)
         {
             _qube = _nextQube;

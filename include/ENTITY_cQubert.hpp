@@ -41,9 +41,7 @@ namespace ENTITY
 
             int m_tickAtJumpGather;
 
-
             Color  _color;
-
     };
 }
 
