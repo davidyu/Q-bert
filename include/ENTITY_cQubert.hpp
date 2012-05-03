@@ -28,13 +28,19 @@ namespace ENTITY
 
         private:
             cQube*      _qube; //which qube am I standing on?
+            cQube*      _nextQube;
             cPlayState* _playState;
+            MATH::Spline* _spline;
+
 
             const int DEATH_COOLDOWN;
-
+            const int JUMP_TIME;
 
             int m_state;
             int m_tickAtDeath;
+
+            int m_tickAtJumpGather;
+
 
             Color  _color;
 

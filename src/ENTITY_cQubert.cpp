@@ -9,6 +9,8 @@
 #include "GFX_G2D_cAnimation.hpp"
 #include "GFX_GfxHelper.hpp"
 
+#include "MATH_Vec3.hpp"
+
 /* temporary */ #include <iostream>
                 using namespace std;
 
@@ -43,7 +45,7 @@ const float QBERT_R = 1.0,
 cTexture* p_expletives = 0;
 
 cQubert::cQubert(cPlayState* ps)
-        : m_state(IDLE), DEATH_COOLDOWN(1000)
+        : _spline(0), m_state(IDLE), DEATH_COOLDOWN(1000), JUMP_TIME(500)
 {
     _playState = ps;
     _qube = ps->GetQubeAt(0,0);
@@ -58,8 +60,8 @@ cQubert::cQubert(cPlayState* ps)
 }
 
 cQubert::cQubert(cPlayState* ps, cQube* q)
-       : _playState(ps), _qube(q), m_state(IDLE),
-         DEATH_COOLDOWN(1000)
+       : _spline(0), _playState(ps), _qube(q), m_state(IDLE),
+         DEATH_COOLDOWN(1000), JUMP_TIME(500)
 {
     _x = _qube->getX();
     _y = _qube->getY();
@@ -71,28 +73,57 @@ cQubert::cQubert(cPlayState* ps, cQube* q)
 
 void cQubert::move(int i, int k)
 {
-    if (m_state == CURSING || m_state == DEAD || m_state == JUMPING_TO_DEATH)
+    if (m_state == CURSING || m_state == DEAD || m_state == JUMPING || m_state == JUMPING_TO_DEATH)
         return;
 
     cout << _qube->getI() + i << ", " << _qube->getK() + k << endl;
 
     //map<pair<int, int>, vector<ENTITY::cQube*>*>::iterator it;
 
-    _qube = _playState->GetQubeAt(_qube->getI() + i, _qube->getK() + k);
+    cQube* nQ = _playState->GetQubeAt(_qube->getI() + i, _qube->getK() + k);
 
-    if (_qube == 0) //death!
+    if (nQ == 0) //death!
     {
         cout << "death: Qubert just fell into the abyss!" << endl;
         _playState->ReportQubertDeath();
         _qube = _playState->GetDefaultQube();
+        _x = _qube->getX();
+        _y = _qube->getY();
+        _z = _qube->getZ();
+        return;
     }
 
-    _x = _qube->getX();
-    _y = _qube->getY();
-    _z = _qube->getZ();
+    float nx = nQ->getX();
+    float ny = nQ->getY();
+    float nz = nQ->getZ();
 
-    if (_qube->activate())
-        _playState->ReportQubeActivation();
+    float dx = nx - _x,
+          dy = ny - _y,
+          dz = nz - _z;
+
+    using MATH::Vec3f;
+
+    const int JUMP_HEIGHT = 2.0;
+    Vec3f p0(_x, _y, _z);
+    Vec3f p1(nx, ny, nz);
+    Vec3f p1_p0 = p1 - p0;
+    p1_p0.Normalize();
+    Vec3f p0p(p1_p0.x, 100, p1_p0.z);
+    Vec3f p1p(p1_p0.x, -100, p1_p0.z);
+
+    _nextQube = nQ;
+
+    if (_spline != 0)
+        delete _spline;
+
+    using MATH::Spline;
+    _spline = new Spline(p0, p1, p0p, p1p);
+    m_state = JUMPING;
+    m_tickAtJumpGather = -1;
+
+    //_x = _qube->getX();
+    //_y = _qube->getY();
+    //_z = _qube->getZ();
 }
 
 void cQubert::handleCollision(float ticks)
@@ -114,6 +145,34 @@ void cQubert::update(CORE::cGame* game, float ticks)
         _y = _qube->getY();
         _z = _qube->getZ();
         m_state = IDLE;
+    }
+    else if (m_state == JUMPING)
+    {
+        if (m_tickAtJumpGather < 0)
+            m_tickAtJumpGather = ticks;
+
+        float u = (ticks - m_tickAtJumpGather) / JUMP_TIME;
+        if (u >= 1)
+        {
+            _qube = _nextQube;
+
+            if (_qube->activate())
+                _playState->ReportQubeActivation();
+
+            _x = _qube->getX();
+            _y = _qube->getY();
+            _z = _qube->getZ();
+
+            m_state = IDLE;
+            return;
+        }
+
+        using MATH::Vec3f;
+        Vec3f pos = _spline->getPosHermite(u);
+
+        _x = pos.x;
+        _y = pos.y;
+        _z = pos.z;
     }
 }
 
