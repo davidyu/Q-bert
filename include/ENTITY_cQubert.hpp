@@ -6,6 +6,7 @@
 #include "ENTITY_cEntity.hpp"
 #include "ENTITY_cQube.hpp"
 #include "QBRT_cPlayState.hpp"
+#include "MATH_Spline.hpp"
 
 class cPlayState;
 
