@@ -28,9 +28,13 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-std=c++0x" />
+					<Add directory="include" />
+					<Add directory="/home/accts/ly58/cs478/final/Spice/include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add directory="/home/accts/ly58/local/lib" />
 				</Linker>
 			</Target>
 		</Build>
@@ -53,7 +57,10 @@
 		<Unit filename="include/ENTITY_cQube.hpp" />
 		<Unit filename="include/ENTITY_cQubert.hpp" />
 		<Unit filename="include/ENTITY_cRedball.hpp" />
+		<Unit filename="include/GFX_Parser.hpp" />
 		<Unit filename="include/GFX_cCamera.hpp" />
+		<Unit filename="include/MATH_Spline.cpp" />
+		<Unit filename="include/MATH_Spline.hpp" />
 		<Unit filename="include/QBRT_cGameOverState.hpp" />
 		<Unit filename="include/QBRT_cMenuState.hpp" />
 		<Unit filename="include/QBRT_cPauseState.hpp" />
@@ -66,6 +73,7 @@
 		<Unit filename="src/ENTITY_cQubert.cpp" />
 		<Unit filename="src/ENTITY_cRedball.cpp" />
 		<Unit filename="src/GFX_cCamera.cpp" />
+		<Unit filename="src/MATH_Vec4.hpp" />
 		<Unit filename="src/QBRT_cGameOverState.cpp" />
 		<Unit filename="src/QBRT_cMenuState.cpp" />
 		<Unit filename="src/QBRT_cPauseState.cpp" />

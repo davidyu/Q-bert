@@ -2,13 +2,18 @@
 #define CQUBERT_H
 
 #include <SDL2/SDL_opengl.h>
+#include <vector>
+
 #include "Color.hpp"
 #include "ENTITY_cEntity.hpp"
 #include "ENTITY_cQube.hpp"
 #include "QBRT_cPlayState.hpp"
 #include "MATH_Spline.hpp"
+#include "MATH_Vec3.hpp"
 
 class cPlayState;
+
+using std::vector;
 
 namespace ENTITY
 {
@@ -32,9 +37,13 @@ namespace ENTITY
             cPlayState* _playState;
             MATH::Spline* _spline;
 
+            vector<MATH::Vec3f> m_qubert_vertices;
+            vector<MATH::Vec3f> m_qubert_normals;
+            vector<GLushort>    m_qubert_elements;
 
             const int DEATH_COOLDOWN;
             const int JUMP_TIME;
+            const int JUMP_TIME_EXTENDED;
 
             int m_state;
             int m_tickAtDeath;

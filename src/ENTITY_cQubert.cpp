@@ -8,6 +8,7 @@
 #include "GFX_cTextureRegistry.hpp"
 #include "GFX_G2D_cAnimation.hpp"
 #include "GFX_GfxHelper.hpp"
+#include "GFX_Parser.hpp"
 
 #include "MATH_Vec3.hpp"
 
@@ -45,7 +46,7 @@ const float QBERT_R = 1.0,
 cTexture* p_expletives = 0;
 
 cQubert::cQubert(cPlayState* ps)
-        : _spline(0), m_state(IDLE), DEATH_COOLDOWN(1000), JUMP_TIME(500)
+        : _spline(0), m_state(IDLE), DEATH_COOLDOWN(1000), JUMP_TIME(500), JUMP_TIME_EXTENDED(750)
 {
     _playState = ps;
     _qube = ps->GetQubeAt(0,0);
@@ -57,11 +58,13 @@ cQubert::cQubert(cPlayState* ps)
         ps->ReportQubeActivation();
 
     _color = Color(QBERT_R, QBERT_G, QBERT_B, 1.0f);
+
+    //GFX::LoadObj("art/qbert.obj", m_qubert_vertices, m_qubert_normals, m_qubert_elements);
 }
 
 cQubert::cQubert(cPlayState* ps, cQube* q)
        : _spline(0), _playState(ps), _qube(q), m_state(IDLE),
-         DEATH_COOLDOWN(1000), JUMP_TIME(500)
+         DEATH_COOLDOWN(1000), JUMP_TIME(500), JUMP_TIME_EXTENDED(750)
 {
     _x = _qube->getX();
     _y = _qube->getY();
@@ -69,6 +72,8 @@ cQubert::cQubert(cPlayState* ps, cQube* q)
     if (_qube->activate())
         ps->ReportQubeActivation();
     _color = Color(QBERT_R, QBERT_G, QBERT_B, 1.0f);
+
+    //GFX::LoadObj("art/qbert.obj", m_qubert_vertices, m_qubert_normals, m_qubert_elements);
 }
 
 void cQubert::move(int i, int k)
@@ -80,36 +85,57 @@ void cQubert::move(int i, int k)
 
     cQube* nQ = _playState->GetQubeAt(_qube->getI() + i, _qube->getK() + k);
 
+    using MATH::Vec3f;
+    Vec3f p0, p1, p0p, p1p;
+
     if (nQ == 0) //death!
     {
-        cout << "death: Qubert just fell into the abyss!" << endl;
-        _playState->ReportQubertDeath();
-        _qube = _playState->GetDefaultQube();
-        _x = _qube->getX();
-        _y = _qube->getY();
-        _z = _qube->getZ();
-        return;
+        //calculate backwards, as if a qube existed
+        cQube* oQ = _playState->GetQubeAt(_qube->getI() - i, _qube->getK() - k);
+        float dx = _x - oQ->getX();
+        float dy = _y - oQ->getY();
+        float dz = _z - oQ->getZ();
+
+        float nx = _x + 2*dx, //jump a little further than the next square
+              ny = _y + dy - 100, //fall into the abyss!
+              nz = _z + 2*dz; //jump a little further than the next square
+
+        const int JUMP_HEIGHT = 2.0;
+        p0 = Vec3f(_x, _y, _z);
+        p1 = Vec3f(nx, ny, nz);
+        Vec3f p1_p0 = p1 - p0;
+        p1_p0.Normalize();
+        p0p = Vec3f(p1_p0.x,  200, p1_p0.z);
+        p1p = Vec3f(p1_p0.x, -200, p1_p0.z);
+
+        _nextQube = _playState->GetDefaultQube();
+
+        m_state = JUMPING_TO_DEATH;
+    }
+    else
+    {
+        float nx = nQ->getX();
+        float ny = nQ->getY();
+        float nz = nQ->getZ();
+
+        float dx = nx - _x,
+              dy = ny - _y,
+              dz = nz - _z;
+
+
+        const int JUMP_HEIGHT = 2.0;
+        p0 = Vec3f(_x, _y, _z);
+        p1 = Vec3f(nx, ny, nz);
+        Vec3f p1_p0 = p1 - p0;
+        p1_p0.Normalize();
+        p0p = Vec3f(p1_p0.x,  100, p1_p0.z);
+        p1p = Vec3f(p1_p0.x, -100, p1_p0.z);
+
+        _nextQube = nQ;
+
+        m_state = JUMPING;
     }
 
-    float nx = nQ->getX();
-    float ny = nQ->getY();
-    float nz = nQ->getZ();
-
-    float dx = nx - _x,
-          dy = ny - _y,
-          dz = nz - _z;
-
-    using MATH::Vec3f;
-
-    const int JUMP_HEIGHT = 2.0;
-    Vec3f p0(_x, _y, _z);
-    Vec3f p1(nx, ny, nz);
-    Vec3f p1_p0 = p1 - p0;
-    p1_p0.Normalize();
-    Vec3f p0p(p1_p0.x, 100, p1_p0.z);
-    Vec3f p1p(p1_p0.x, -100, p1_p0.z);
-
-    _nextQube = nQ;
     _qube = 0;
 
     if (_spline != 0)
@@ -117,7 +143,6 @@ void cQubert::move(int i, int k)
 
     using MATH::Spline;
     _spline = new Spline(p0, p1, p0p, p1p);
-    m_state = JUMPING;
     m_tickAtJumpGather = -1;
 }
 
@@ -155,6 +180,34 @@ void cQubert::update(CORE::cGame* game, float ticks)
             if (_qube->activate())
                 _playState->ReportQubeActivation();
 
+            _x = _qube->getX();
+            _y = _qube->getY();
+            _z = _qube->getZ();
+
+            m_state = IDLE;
+            return;
+        }
+
+        using MATH::Vec3f;
+        Vec3f pos = _spline->getPosHermite(u);
+
+        _x = pos.x;
+        _y = pos.y;
+        _z = pos.z;
+    }
+    else if (m_state == JUMPING_TO_DEATH)
+    {
+        if (m_tickAtJumpGather < 0)
+            m_tickAtJumpGather = ticks;
+
+        float u = (ticks - m_tickAtJumpGather) / JUMP_TIME_EXTENDED;
+
+        if (u >= 1)
+        {
+            cout << "death: Qubert just fell into the abyss!" << endl;
+
+            _playState->ReportQubertDeath();
+            _qube = _nextQube;
             _x = _qube->getX();
             _y = _qube->getY();
             _z = _qube->getZ();
@@ -220,6 +273,10 @@ void cQubert::render(float ticks)
         glPopMatrix();
     }
 
+    //glEnableVertexAttribArray(attribute_v_coord);
+
+
+
     int i, j;
     int latStrips = LAT_RESOLUTION;
     int longStrips = LONG_RESOLUTION;
@@ -235,8 +292,8 @@ void cQubert::render(float ticks)
         float z1 = sin(lat1);
         float zr1 = cos(lat1);
 
-        glBegin(GL_QUAD_STRIP);
         glColor3f(_color.getR(), _color.getG(), _color.getB());
+        glBegin(GL_QUAD_STRIP);
         for(j = 0; j <= longStrips; j++)
         {
             float lng = 2 * M_PI * (float) (j - 1) / longStrips;

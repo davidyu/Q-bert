@@ -8,6 +8,7 @@ using namespace ENTITY;
 
 enum State {
     JUMPING,
+    JUMPING_TO_DEATH,
     IDLE,
     THINKING,
     DEAD
@@ -15,7 +16,7 @@ enum State {
 
 cRedball::cRedball(cPlayState* ps, cQube* q, int startTick)
        : _spline(0), _qube(q), _playState(ps), _executeStrategyThresh(1000), _ticksSinceExecuteStrategy(startTick),
-         RADIUS(5.0f), Y_OFFSET(10.0f), LAT_RESOLUTION(20), LONG_RESOLUTION(20), JUMP_TIME(500)
+         RADIUS(5.0f), Y_OFFSET(10.0f), LAT_RESOLUTION(20), LONG_RESOLUTION(20), JUMP_TIME(500), JUMP_TIME_EXTENDED(750)
 {
     _x = _qube->getX();
     _y = _qube->getY();
@@ -29,33 +30,56 @@ void cRedball::move(int i, int k)
 {
     cQube* nQ = _playState->GetQubeAt(_qube->getI() + i, _qube->getK() + k);
 
+    using MATH::Vec3f;
+    Vec3f p0, p1, p0p, p1p;
+
     if (nQ == 0) //death!
     {
-        cout << "a red ball just fell into the abyss!" << endl;
-        _state = DEAD;
-        _playState->Remove(this);
-        return;
+        //calculate backwards, as if a qube existed
+        cQube* oQ = _playState->GetQubeAt(_qube->getI() - i, _qube->getK() - k);
+        float dx = _x - oQ->getX();
+        float dy = _y - oQ->getY();
+        float dz = _z - oQ->getZ();
+
+        float nx = _x + 2*dx, //jump a little further than the next square
+              ny = _y + dy - 100, //fall into the abyss!
+              nz = _z + 2*dz; //jump a little further than the next square
+
+        const int JUMP_HEIGHT = 2.0;
+        p0 = Vec3f(_x, _y, _z);
+        p1 = Vec3f(nx, ny, nz);
+        Vec3f p1_p0 = p1 - p0;
+        p1_p0.Normalize();
+        p0p = Vec3f(p1_p0.x,  200, p1_p0.z);
+        p1p = Vec3f(p1_p0.x, -200, p1_p0.z);
+
+        _nextQube = _playState->GetDefaultQube();
+        _state = JUMPING_TO_DEATH;
+    }
+    else
+    {
+        float nx = nQ->getX();
+        float ny = nQ->getY();
+        float nz = nQ->getZ();
+
+        float dx = nx - _x,
+              dy = ny - _y,
+              dz = nz - _z;
+
+
+        const int JUMP_HEIGHT = 2.0;
+        p0 = Vec3f(_x, _y, _z);
+        p1 = Vec3f(nx, ny, nz);
+        Vec3f p1_p0 = p1 - p0;
+        p1_p0.Normalize();
+        p0p = Vec3f(p1_p0.x,  100, p1_p0.z);
+        p1p = Vec3f(p1_p0.x, -100, p1_p0.z);
+
+        _nextQube = nQ;
+
+        _state = JUMPING;
     }
 
-    float nx = nQ->getX();
-    float ny = nQ->getY();
-    float nz = nQ->getZ();
-
-    float dx = nx - _x,
-          dy = ny - _y,
-          dz = nz - _z;
-
-    using MATH::Vec3f;
-
-    const int JUMP_HEIGHT = 2.0;
-    Vec3f p0(_x, _y, _z);
-    Vec3f p1(nx, ny, nz);
-    Vec3f p1_p0 = p1 - p0;
-    p1_p0.Normalize();
-    Vec3f p0p(p1_p0.x, 50, p1_p0.z);
-    Vec3f p1p(p1_p0.x, -50, p1_p0.z);
-
-    _nextQube = nQ;
     _qube = 0;
 
     if (_spline != 0)
@@ -63,7 +87,6 @@ void cRedball::move(int i, int k)
 
     using MATH::Spline;
     _spline = new Spline(p0, p1, p0p, p1p);
-    _state = JUMPING;
     m_tickAtJumpGather = -1;
 }
 
@@ -100,6 +123,29 @@ void cRedball::update(CORE::cGame* game, float ticks)
         _y = pos.y;
         _z = pos.z;
     }
+    else if (_state == JUMPING_TO_DEATH)
+    {
+        if (m_tickAtJumpGather < 0)
+            m_tickAtJumpGather = ticks;
+
+        float u = (ticks - m_tickAtJumpGather) / JUMP_TIME_EXTENDED;
+
+        if (u >= 1)
+        {
+            cout << "a red ball just fell into the abyss!" << endl;
+            _state = DEAD;
+            _playState->Remove(this);
+            return;
+        }
+
+        using MATH::Vec3f;
+        Vec3f pos = _spline->getPosHermite(u);
+
+        _x = pos.x;
+        _y = pos.y;
+        _z = pos.z;
+
+    }
     else if (_state == IDLE && (ticks - _ticksSinceExecuteStrategy >= _executeStrategyThresh))
     {
         //move somewhere
@@ -108,7 +154,7 @@ void cRedball::update(CORE::cGame* game, float ticks)
         {
             move(0, -1);
         }
-        else if (_qube->getI() < 6)        //right
+        else if (_qube->getI() < 7)        //right
         {
             move(1, 0);
         }
@@ -140,8 +186,8 @@ void cRedball::render(float ticks)
         float z1 = sin(lat1);
         float zr1 = cos(lat1);
 
-        glBegin(GL_QUAD_STRIP);
         glColor3f(_color.getR(), _color.getG(), _color.getB());
+        glBegin(GL_QUAD_STRIP);
         for(j = 0; j <= longStrips; j++)
         {
             float lng = 2 * M_PI * (float) (j - 1) / longStrips;

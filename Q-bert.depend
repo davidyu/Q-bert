@@ -503,7 +503,7 @@
 	"STATE_cGameStateManager.hpp"
 	"cGenericFactory.hpp"
 
-1336027370 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
+1336077006 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
 	<SDL2/SDL_opengl.h>
 	"QBRT_cPlayState.hpp"
 	"STATE_iGameState.hpp"
@@ -550,7 +550,7 @@
 1335596000 /home/accts/ly58/cs478/final/Spice/include/GFX_cTextureWrapper.hpp
 	<SDL2/SDL_opengl.h>
 
-1336027571 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQubert.cpp
+1336076918 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQubert.cpp
 	"ENTITY_cQubert.hpp"
 	<cmath>
 	"QCORE_cQGame.hpp"
@@ -560,21 +560,24 @@
 	"GFX_cTextureRegistry.hpp"
 	"GFX_G2D_cAnimation.hpp"
 	"GFX_GfxHelper.hpp"
+	"GFX_Parser.hpp"
 	"MATH_Vec3.hpp"
 
-1336026309 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cQubert.hpp
+1336074726 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cQubert.hpp
 	<SDL2/SDL_opengl.h>
+	<vector>
 	"Color.hpp"
 	"ENTITY_cEntity.hpp"
 	"ENTITY_cQube.hpp"
 	"QBRT_cPlayState.hpp"
 	"MATH_Spline.hpp"
+	"MATH_Vec3.hpp"
 
-1336027534 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cRedball.cpp
+1336077292 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cRedball.cpp
 	"ENTITY_cRedball.hpp"
 	<cmath>
 
-1336026923 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cRedball.hpp
+1336075883 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cRedball.hpp
 	<SDL2/SDL_opengl.h>
 	"Color.hpp"
 	"ENTITY_cEntity.hpp"
@@ -656,4 +659,10 @@
 	"MATH_Vec4.hpp"
 	"MATH_LinearAlgebra.hpp"
 	<cmath>
+
+1336074402 /home/accts/ly58/cs478/final/Q-bert/include/GFX_Parser.hpp
+	<vector>
+	<fstream>
+	<sstream>
+	"MATH_Vec3.hpp"
 

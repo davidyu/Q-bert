@@ -28,6 +28,7 @@ namespace ENTITY
             int       m_tickAtJumpGather;
             const int _executeStrategyThresh;
             const int JUMP_TIME;
+            const int JUMP_TIME_EXTENDED;
             int       _state;
 
             cQube*      _qube;

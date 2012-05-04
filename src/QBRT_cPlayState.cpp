@@ -36,6 +36,7 @@ STATE::iGameState* cPlayState::CreateInstance()
 {
     return new cPlayState;
 }
+
 STATE::iGameState* cPlayState::Clone()
 {
     return new cPlayState;
@@ -55,6 +56,32 @@ void cPlayState::resetSDLView()
 {
     glOrtho(-100.0f, 100.0f, -100.0f, 100.0f, -500.0f, 500.0f);
 
+    //lighting
+    /*
+    GLfloat mat_specular[] = {0.1, 0.1, 0.1, 1.0};
+    GLfloat mat_shininess[] = {0.0001};
+    GLfloat light_position[] = {20, 20, 20};
+    glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+    glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
+    glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+
+    GLfloat global_ambient[] = {0.5f, 0.5f, 0.5f, 1.0f};
+
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, global_ambient);
+
+
+    GLfloat light_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+
+    GLfloat la[] = { 1.0 };
+    glLightfv(GL_LIGHT0, GL_LINEAR_ATTENUATION, la);
+    GLfloat light_position[] = {20, 20, 20};
+
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+    glEnable(GL_COLOR_MATERIAL);
+    */
+
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     glShadeModel(GL_SMOOTH);
@@ -70,6 +97,16 @@ void cPlayState::loadLevel()
                        0,0,0,0,1,2,3,
                        0,0,0,0,0,1,2,
                        0,0,0,0,0,0,1};
+
+    /*
+    int pyramid[49] = {1,2,3,4,7,6,10,
+                       0,1,4,3,4,5,6,
+                       0,0,1,2,7,4,5,
+                       0,0,0,1,2,3,14,
+                       0,0,0,0,1,2,3,
+                       0,0,0,0,0,3,2,
+                       0,0,0,0,0,0,1};
+    */
 
     int w = 7, h = 7;
 
@@ -202,7 +239,6 @@ void cPlayState::Remove(ENTITY::cEntity* e) //removes entity
         cEntity* ee = *it;
         if (ee == e)
         {
-            delete e;
             entities.erase(it);
             break;
         }
@@ -217,6 +253,8 @@ void cPlayState::Remove(ENTITY::cEntity* e) //removes entity
             break;
         }
     }
+
+    delete e;
 }
 
 void cPlayState::ReportQubertDeath()
