@@ -1,0 +1,659 @@
+# depslib dependency file v1.0
+1334453025 source:/home/accts/ly58/cs478/final/Q-bert/src/CORE_cGame.cpp
+	<SDL2/SDL_opengl.h>
+	<SDL2/SDL_image.h>
+	"CORE_cGame.hpp"
+	"STATE_iGameState.hpp"
+	"demo_cPlayState.hpp"
+	<cassert>
+	<stdlib.h>
+
+1334422630 /home/accts/ly58/cs478/final/Q-bert/include/CORE_cGame.hpp
+	"SDL2/SDL.h"
+	"CORE_iApplication.hpp"
+	"CORE_cSDLState.hpp"
+	"CORE_Input.hpp"
+	"CORE_cTimer.hpp"
+	"STATE_cGameStateManager.hpp"
+	"cGenericFactory.hpp"
+
+1334422630 /home/accts/ly58/cs478/final/Spice/include/CORE_iApplication.hpp
+
+1334637632 /home/accts/ly58/cs478/final/Spice/include/CORE_cSDLState.hpp
+	<SDL2/SDL.h>
+
+1334433724 /home/accts/ly58/cs478/final/Spice/include/CORE_Input.hpp
+	<algorithm>
+	"SDL2/SDL.h"
+	"CORE_keycodes.hpp"
+
+1334422630 /home/accts/ly58/cs478/final/Spice/include/CORE_keycodes.hpp
+
+1335596000 /home/accts/ly58/cs478/final/Spice/include/CORE_cTimer.hpp
+	<SDL2/SDL.h>
+
+1334601792 /home/accts/ly58/cs478/final/Spice/include/STATE_cGameStateManager.hpp
+	<vector>
+
+1335596391 /home/accts/ly58/cs478/final/Spice/include/cGenericFactory.hpp
+	<map>
+	<string>
+
+1335596000 /home/accts/ly58/cs478/final/Spice/include/STATE_iGameState.hpp
+
+1334452870 /home/accts/ly58/cs478/final/Q-bert/include/demo_cPlayState.hpp
+	"STATE_iGameState.hpp"
+
+1334452892 source:/home/accts/ly58/cs478/final/Q-bert/src/demo_cPlayState.cpp
+	<SDL2/SDL_opengl.h>
+	"demo_cPlayState.hpp"
+	"CORE_cGame.hpp"
+	"GFX_cTexture.hpp"
+
+1335596000 /home/accts/ly58/cs478/final/Spice/include/GFX_cTexture.hpp
+	<memory>
+	<cassert>
+	<string>
+	"GFX_cTextureWrapper.hpp"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_opengl.h
+	"SDL_config.h"
+	<windows.h>
+	<OpenGL/gl.h>
+	<GL/gl.h>
+	<windows.h>
+	<stddef.h>
+	<inttypes.h>
+	<inttypes.h>
+	<inttypes.h>
+	<stdint.h>
+	<stdint.h>
+	<inttypes.h>
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_config.h
+	"SDL_platform.h"
+	<stdarg.h>
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_platform.h
+	"AvailabilityMacros.h"
+	"TargetConditionals.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/begin_code.h
+
+1334427315 /home/accts/ly58/local/include/SDL2/close_code.h
+
+1334434944 /home/accts/ly58/local/include/SDL2/SDL_image.h
+	"SDL.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_assert.h"
+	"SDL_atomic.h"
+	"SDL_audio.h"
+	"SDL_clipboard.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_hints.h"
+	"SDL_loadso.h"
+	"SDL_log.h"
+	"SDL_mutex.h"
+	"SDL_power.h"
+	"SDL_render.h"
+	"SDL_rwops.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_version.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<math.h>
+	<iconv.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_assert.h
+	"SDL_config.h"
+	"begin_code.h"
+	<signal.h>
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_atomic.h
+	"SDL_stdinc.h"
+	"SDL_platform.h"
+	"begin_code.h"
+	<intrin.h>
+	<libkern/OSAtomic.h>
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_endian.h
+	"SDL_stdinc.h"
+	<endian.h>
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_clipboard.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_cpuinfo.h
+	"SDL_stdinc.h"
+	<intrin.h>
+	<intrin.h>
+	<altivec.h>
+	<mmintrin.h>
+	<mm3dnow.h>
+	<xmmintrin.h>
+	<emmintrin.h>
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_quit.h"
+	"SDL_gesture.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_video.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_pixels.h
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_rect.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_pixels.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_surface.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_blendmode.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_blendmode.h
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keycode.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_keycode.h
+	"SDL_stdinc.h"
+	"SDL_scancode.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_scancode.h
+	"SDL_stdinc.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_gesture.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_touch.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_hints.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_log.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_power.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_render.h
+	"SDL_stdinc.h"
+	"SDL_rect.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1334427315 /home/accts/ly58/local/include/SDL2/SDL_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1336019040 /home/accts/ly58/cs478/final/Spice/include/CORE_cGame.hpp
+	"SDL2/SDL.h"
+	"CORE_iApplication.hpp"
+	"CORE_cSDLState.hpp"
+	"CORE_Input.hpp"
+	"CORE_cTimer.hpp"
+	"STATE_cGameStateManager.hpp"
+	"cGenericFactory.hpp"
+
+1334422630 /home/accts/ly58/cs478/final/Spice/include/demo_cPlayState.hpp
+	"STATE_iGameState.hpp"
+
+1334637380 source:/home/accts/ly58/cs478/final/Spice/src/CORE_cSDLState.cpp
+	"CORE_cSDLState.hpp"
+
+1334601793 source:/home/accts/ly58/cs478/final/Spice/src/CORE_cTimer.cpp
+	"SDL2/SDL.h"
+	"CORE_cTimer.hpp"
+
+1336014102 source:/home/accts/ly58/cs478/final/Spice/src/GFX_G2D_cSpriteBatch.cpp
+	"GFX_G2D_cSpriteBatch.hpp"
+	"GFX_cTextureWrapper.hpp"
+	"GFX_cTextureMesh.hpp"
+	"MATH_MathHelper.hpp"
+	"memory_macros.h"
+
+1336014102 /home/accts/ly58/cs478/final/Spice/include/GFX_G2D_cSpriteBatch.hpp
+	<SDL2/SDL_opengl.h>
+	"GFX_Color4.hpp"
+
+1336014102 source:/home/accts/ly58/cs478/final/Spice/src/GFX_G2D_cTextureRegion.cpp
+	"GFX_G2D_cTextureRegion.hpp"
+
+1336014102 /home/accts/ly58/cs478/final/Spice/include/GFX_G2D_cTextureRegion.hpp
+	<vector>
+	"GFX_cTextureWrapper.hpp"
+
+1334422631 source:/home/accts/ly58/cs478/final/Spice/src/GFX_cCameraBase.cpp
+	"GFX_cCameraBase.hpp"
+
+1334422630 /home/accts/ly58/cs478/final/Spice/include/GFX_cCameraBase.hpp
+	"MATH_LinearAlgebra.hpp"
+
+1336019049 /home/accts/ly58/cs478/final/Spice/include/MATH_LinearAlgebra.hpp
+	"MATH_Vec4.hpp"
+	"MATH_Vec3.hpp"
+	"MATH_Vec2.hpp"
+	"MATH_Matrix4x4.hpp"
+
+1334422630 /home/accts/ly58/cs478/final/Spice/include/MATH_Vec3.hpp
+	"MATH_MathHelper.hpp"
+
+1335596000 /home/accts/ly58/cs478/final/Spice/include/MATH_MathHelper.hpp
+	<cmath>
+
+1335596000 /home/accts/ly58/cs478/final/Spice/include/MATH_Vec2.hpp
+	"MATH_MathHelper.hpp"
+
+1334713170 /home/accts/ly58/cs478/final/Spice/include/MATH_Matrix4x4.hpp
+	"MATH_MathHelper.hpp"
+
+1335596000 source:/home/accts/ly58/cs478/final/Spice/src/GFX_cImage.cpp
+	"GFX_cImage.hpp"
+	<iostream>
+	<SDL2/SDL_image.h>
+
+1335373550 /home/accts/ly58/cs478/final/Spice/include/GFX_cImage.hpp
+	<string>
+	<SDL2/SDL.h>
+	<SDL2/SDL_opengl.h>
+	<cassert>
+
+1336014102 source:/home/accts/ly58/cs478/final/Spice/src/GFX_cTexture.cpp
+	"GFX_cTexture.hpp"
+	"GFX_cImage.hpp"
+	<GL/glu.h>
+	<iostream>
+
+1334422631 source:/home/accts/ly58/cs478/final/Spice/src/MATH_Matrix4x4.cpp
+	"MATH_Matrix4x4.hpp"
+
+1336014102 source:/home/accts/ly58/cs478/final/Spice/src/STATE_cGameStateManager.cpp
+	<cassert>
+	"memory_macros.h"
+	"STATE_cGameStateManager.hpp"
+	"STATE_iGameState.hpp"
+	"STATE_cGameTransition.hpp"
+
+1334422630 /home/accts/ly58/cs478/final/Spice/include/memory_macros.h
+	<string.h>
+
+1334953862 /home/accts/ly58/cs478/final/Spice/include/STATE_cGameTransition.hpp
+	"CORE_cGame.hpp"
+
+1334601793 source:/home/accts/ly58/cs478/final/Spice/main.cpp
+	<iostream>
+	"CORE_cGame.hpp"
+	<windows.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_opengl.h>
+
+1334624576 source:/home/accts/ly58/cs478/final/Q-bert/src/CORE_cQGame.cpp
+	<SDL2/SDL_opengl.h>
+	<SDL2/SDL_image.h>
+	"CORE_cGame.hpp"
+	"STATE_iGameState.hpp"
+	"demo_cPlayState.hpp"
+	<cassert>
+	<stdlib.h>
+
+1334601438 source:/home/accts/ly58/cs478/final/Q-bert/src/qbert_cPlayState.cpp
+	<SDL2/SDL_opengl.h>
+	"demo_cPlayState.hpp"
+	"CORE_cGame.hpp"
+	"GFX_cTexture.hpp"
+
+1336014102 source:/home/accts/ly58/cs478/final/Spice/src/GFX_cTextureMesh.cpp
+	<SDL2/SDL_opengl.h>
+	"GFX_cTextureMesh.hpp"
+
+1336014102 /home/accts/ly58/cs478/final/Spice/include/GFX_cTextureMesh.hpp
+	<vector>
+	<SDL2/SDL_opengl.h>
+
+1335772966 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQube.cpp
+	"ENTITY_cQube.hpp"
+	<vector>
+	<iostream>
+
+1335772288 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cQube.hpp
+	<vector>
+	<SDL2/SDL_opengl.h>
+	"Color.hpp"
+	"ENTITY_cEntity.hpp"
+
+1334629341 source:/home/accts/ly58/cs478/final/Q-bert/main.cpp
+	<iostream>
+	"QCORE_cQGame.hpp"
+	<windows.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_opengl.h>
+
+1335634333 /home/accts/ly58/cs478/final/Q-bert/include/QCORE_cQGame.hpp
+	"SDL2/SDL.h"
+	"CORE_iApplication.hpp"
+	"STATE_iGameState.hpp"
+	"CORE_cSDLState.hpp"
+	"CORE_Input.hpp"
+	"CORE_cTimer.hpp"
+	"STATE_cGameStateManager.hpp"
+	"cGenericFactory.hpp"
+
+1336027370 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPlayState.cpp
+	<SDL2/SDL_opengl.h>
+	"QBRT_cPlayState.hpp"
+	"STATE_iGameState.hpp"
+	"QCORE_cQGame.hpp"
+	"GFX_cTexture.hpp"
+	"QBRT_cPauseState.hpp"
+	<cmath>
+
+1335835912 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cPlayState.hpp
+	<vector>
+	<map>
+	<utility>
+	"STATE_iGameState.hpp"
+	"cGenericFactory.hpp"
+	"ENTITY_cQube.hpp"
+	"ENTITY_cQubert.hpp"
+	"ENTITY_cRedball.hpp"
+	"QBRT_cGameOverState.hpp"
+	<iostream>
+
+1335833666 source:/home/accts/ly58/cs478/final/Q-bert/src/QCORE_cQGame.cpp
+	<SDL2/SDL_opengl.h>
+	<SDL2/SDL_image.h>
+	"QCORE_cQGame.hpp"
+	"STATE_iGameState.hpp"
+	"QBRT_cPlayState.hpp"
+	"QBRT_cGameOverState.hpp"
+	"QBRT_cMenuState.hpp"
+	<cassert>
+	<stdlib.h>
+
+1335772457 source:/home/accts/ly58/cs478/final/Q-bert/src/Color.cpp
+	"Color.hpp"
+
+1335772503 /home/accts/ly58/cs478/final/Q-bert/include/Color.hpp
+
+1335549699 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cEntity.cpp
+	"ENTITY_cEntity.hpp"
+
+1335581604 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cEntity.hpp
+
+1334714718 source:/home/accts/ly58/cs478/final/Q-bert/src/GFX_cCamera.cpp
+
+1335596000 /home/accts/ly58/cs478/final/Spice/include/GFX_cTextureWrapper.hpp
+	<SDL2/SDL_opengl.h>
+
+1336027571 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cQubert.cpp
+	"ENTITY_cQubert.hpp"
+	<cmath>
+	"QCORE_cQGame.hpp"
+	"GFX_cImage.hpp"
+	"GFX_cTexture.hpp"
+	"GFX_G2D_cTextureRegion.hpp"
+	"GFX_cTextureRegistry.hpp"
+	"GFX_G2D_cAnimation.hpp"
+	"GFX_GfxHelper.hpp"
+	"MATH_Vec3.hpp"
+
+1336026309 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cQubert.hpp
+	<SDL2/SDL_opengl.h>
+	"Color.hpp"
+	"ENTITY_cEntity.hpp"
+	"ENTITY_cQube.hpp"
+	"QBRT_cPlayState.hpp"
+	"MATH_Spline.hpp"
+
+1336027534 source:/home/accts/ly58/cs478/final/Q-bert/src/ENTITY_cRedball.cpp
+	"ENTITY_cRedball.hpp"
+	<cmath>
+
+1336026923 /home/accts/ly58/cs478/final/Q-bert/include/ENTITY_cRedball.hpp
+	<SDL2/SDL_opengl.h>
+	"Color.hpp"
+	"ENTITY_cEntity.hpp"
+	"ENTITY_cQube.hpp"
+	"QBRT_cPlayState.hpp"
+	"MATH_Spline.hpp"
+
+1335641948 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cGameOverState.hpp
+	"STATE_iGameState.hpp"
+
+1335766499 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cGameOverState.cpp
+	<SDL2/SDL_opengl.h>
+	"QCORE_cQGame.hpp"
+	"QBRT_cGameOverState.hpp"
+	"GFX_cTextureRegistry.hpp"
+	"GFX_cImage.hpp"
+	"GFX_cTexture.hpp"
+	"GFX_G2D_cAnimation.hpp"
+	"GFX_G2D_cTextureRegion.hpp"
+	"GFX_GfxHelper.hpp"
+
+1335596000 /home/accts/ly58/cs478/final/Spice/include/GFX_Color4.hpp
+
+1335373550 /home/accts/ly58/cs478/final/Spice/include/GFX_cTextureRegistry.hpp
+	<unordered_map>
+	<string>
+	"GFX_cTextureWrapper.hpp"
+
+1335596000 /home/accts/ly58/cs478/final/Spice/include/GFX_G2D_cAnimation.hpp
+	<vector>
+	"MATH_MathHelper.hpp"
+
+1335769853 /home/accts/ly58/cs478/final/Spice/include/GFX_GfxHelper.hpp
+	<SDL2/SDL_opengl.h>
+	"GFX_cTextureWrapper.hpp"
+
+1335754648 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cMenuState.cpp
+	<SDL2/SDL_opengl.h>
+	"QCORE_cQGame.hpp"
+	"QBRT_cMenuState.hpp"
+	"GFX_cTextureRegistry.hpp"
+	"GFX_cImage.hpp"
+	"GFX_G2D_cAnimation.hpp"
+	"GFX_G2D_cTextureRegion.hpp"
+	"GFX_GfxHelper.hpp"
+
+1335754495 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cMenuState.hpp
+	"STATE_iGameState.hpp"
+	"GFX_cTexture.hpp"
+
+1335836318 source:/home/accts/ly58/cs478/final/Q-bert/src/QBRT_cPauseState.cpp
+	<SDL2/SDL_opengl.h>
+	"QCORE_cQGame.hpp"
+	"QBRT_cPauseState.hpp"
+	"GFX_cTextureRegistry.hpp"
+	"GFX_cImage.hpp"
+	"GFX_G2D_cAnimation.hpp"
+	"GFX_G2D_cTextureRegion.hpp"
+	"GFX_GfxHelper.hpp"
+
+1335835482 /home/accts/ly58/cs478/final/Q-bert/include/QBRT_cPauseState.hpp
+	"STATE_iGameState.hpp"
+	"GFX_cTexture.hpp"
+	"QBRT_cPlayState.hpp"
+
+1336013229 source:/home/accts/ly58/cs478/final/Q-bert/include/MATH_Spline.cpp
+	"MATH_cSpline.hpp"
+	"MATH_Matrix4x4.hpp"
+	"MATH_Vec3.hpp"
+	"MATH_Vec4.hpp"
+	<cmath>
+
+1336013221 /home/accts/ly58/cs478/final/Spice/include/MATH_Vec4.hpp
+	"MATH_MathHelper.hpp"
+
+1336025271 /home/accts/ly58/cs478/final/Q-bert/include/MATH_Spline.hpp
+	"MATH_Matrix4x4.hpp"
+	"MATH_Vec3.hpp"
+	"MATH_Vec4.hpp"
+	"MATH_LinearAlgebra.hpp"
+	<cmath>
+
