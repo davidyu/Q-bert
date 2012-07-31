@@ -9,7 +9,7 @@ Q-bert
 
 ##History
 
-This game "happened" in a rough-n-tumble 2 weeks, after which three separate final projects were all due. It is rough around the edges, but I got to try out spline-based animations and OpenGL in the raw. I used a close friend's game frameworks library to facilitate multiplatform compatibility (in the end, this was tested to work on both Linux and Windows; OS X seemed to lack stable binaries of SDL2).
+This game "happened" in a rough-n-tumble 2 weeks, after which three final projects were all due. It's a little rough around the edges, but I got to try out spline-based animations and OpenGL in the raw. I used a close friend's game frameworks library to facilitate multiplatform compatibility (in the end, this was tested to work on both Linux and Windows; OS X seemed to lack stable binaries of SDL2).
 
 ##Tools and cool tech
 
