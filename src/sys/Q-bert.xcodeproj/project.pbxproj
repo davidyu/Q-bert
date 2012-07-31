@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01E5634715B7CFFE00507FE0 /* HelloSDLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C93E3A813942B5A0096FAB3 /* HelloSDLAppDelegate.m */; };
+		01E5634815B7CFFE00507FE0 /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C93E3B513942C360096FAB3 /* SDLMain.m */; };
+		01E5634915B7CFFE00507FE0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C93E3B713942C790096FAB3 /* main.cpp */; };
+		01E5634B15B7CFFE00507FE0 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C93E3BA13942F620096FAB3 /* OpenGL.framework */; };
+		01E5634C15B7CFFE00507FE0 /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C93E3B213942B700096FAB3 /* SDL.framework */; };
+		01E5634D15B7CFFE00507FE0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C93E39513942B5A0096FAB3 /* Cocoa.framework */; };
+		01E5634F15B7CFFE00507FE0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C93E39E13942B5A0096FAB3 /* InfoPlist.strings */; };
+		01E5635015B7CFFE00507FE0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C93E3AA13942B5A0096FAB3 /* MainMenu.xib */; };
 		9C93E39613942B5A0096FAB3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C93E39513942B5A0096FAB3 /* Cocoa.framework */; };
 		9C93E3A013942B5A0096FAB3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C93E39E13942B5A0096FAB3 /* InfoPlist.strings */; };
-		9C93E3A613942B5A0096FAB3 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9C93E3A413942B5A0096FAB3 /* Credits.rtf */; };
 		9C93E3A913942B5A0096FAB3 /* HelloSDLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C93E3A813942B5A0096FAB3 /* HelloSDLAppDelegate.m */; };
 		9C93E3AC13942B5A0096FAB3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C93E3AA13942B5A0096FAB3 /* MainMenu.xib */; };
 		9C93E3B313942B700096FAB3 /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C93E3B213942B700096FAB3 /* SDL.framework */; };
@@ -19,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01E5635415B7CFFE00507FE0 /* HelloSDL copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HelloSDL copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		01E5635615B7CFFE00507FE0 /* HelloSDL copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "HelloSDL copy-Info.plist"; path = "/Users/lewen/Documents/Projects/Q-bert/src/sys/HelloSDL copy-Info.plist"; sourceTree = "<absolute>"; };
 		9C93E39113942B5A0096FAB3 /* HelloSDL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloSDL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C93E39513942B5A0096FAB3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9C93E39813942B5A0096FAB3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -27,7 +36,6 @@
 		9C93E39D13942B5A0096FAB3 /* HelloSDL-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HelloSDL-Info.plist"; sourceTree = "<group>"; };
 		9C93E39F13942B5A0096FAB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9C93E3A113942B5A0096FAB3 /* HelloSDL-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloSDL-Prefix.pch"; sourceTree = "<group>"; };
-		9C93E3A513942B5A0096FAB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		9C93E3A713942B5A0096FAB3 /* HelloSDLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloSDLAppDelegate.h; sourceTree = "<group>"; };
 		9C93E3A813942B5A0096FAB3 /* HelloSDLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloSDLAppDelegate.m; sourceTree = "<group>"; };
 		9C93E3AB13942B5A0096FAB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -40,6 +48,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		01E5634A15B7CFFE00507FE0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01E5634B15B7CFFE00507FE0 /* OpenGL.framework in Frameworks */,
+				01E5634C15B7CFFE00507FE0 /* SDL.framework in Frameworks */,
+				01E5634D15B7CFFE00507FE0 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9C93E38E13942B5A0096FAB3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -59,6 +77,7 @@
 				9C93E39B13942B5A0096FAB3 /* HelloSDL */,
 				9C93E39413942B5A0096FAB3 /* Frameworks */,
 				9C93E39213942B5A0096FAB3 /* Products */,
+				01E5635615B7CFFE00507FE0 /* HelloSDL copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				9C93E39113942B5A0096FAB3 /* HelloSDL.app */,
+				01E5635415B7CFFE00507FE0 /* HelloSDL copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,7 +122,6 @@
 				9C93E39D13942B5A0096FAB3 /* HelloSDL-Info.plist */,
 				9C93E39E13942B5A0096FAB3 /* InfoPlist.strings */,
 				9C93E3A113942B5A0096FAB3 /* HelloSDL-Prefix.pch */,
-				9C93E3A413942B5A0096FAB3 /* Credits.rtf */,
 				9C93E3B713942C790096FAB3 /* main.cpp */,
 				9C93E3B813942C790096FAB3 /* main.h */,
 			);
@@ -112,6 +131,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		01E5634515B7CFFE00507FE0 /* Q-bert */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01E5635115B7CFFE00507FE0 /* Build configuration list for PBXNativeTarget "Q-bert" */;
+			buildPhases = (
+				01E5634615B7CFFE00507FE0 /* Sources */,
+				01E5634A15B7CFFE00507FE0 /* Frameworks */,
+				01E5634E15B7CFFE00507FE0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Q-bert";
+			productName = HelloSDL;
+			productReference = 01E5635415B7CFFE00507FE0 /* HelloSDL copy.app */;
+			productType = "com.apple.product-type.application";
+		};
 		9C93E39013942B5A0096FAB3 /* HelloSDL */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9C93E3AF13942B5A0096FAB3 /* Build configuration list for PBXNativeTarget "HelloSDL" */;
@@ -138,7 +174,7 @@
 				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = Student;
 			};
-			buildConfigurationList = 9C93E38B13942B590096FAB3 /* Build configuration list for PBXProject "HelloSDL" */;
+			buildConfigurationList = 9C93E38B13942B590096FAB3 /* Build configuration list for PBXProject "Q-bert" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -151,17 +187,26 @@
 			projectRoot = "";
 			targets = (
 				9C93E39013942B5A0096FAB3 /* HelloSDL */,
+				01E5634515B7CFFE00507FE0 /* Q-bert */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		01E5634E15B7CFFE00507FE0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01E5634F15B7CFFE00507FE0 /* InfoPlist.strings in Resources */,
+				01E5635015B7CFFE00507FE0 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9C93E38F13942B5A0096FAB3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				9C93E3A013942B5A0096FAB3 /* InfoPlist.strings in Resources */,
-				9C93E3A613942B5A0096FAB3 /* Credits.rtf in Resources */,
 				9C93E3AC13942B5A0096FAB3 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,6 +214,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		01E5634615B7CFFE00507FE0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01E5634715B7CFFE00507FE0 /* HelloSDLAppDelegate.m in Sources */,
+				01E5634815B7CFFE00507FE0 /* SDLMain.m in Sources */,
+				01E5634915B7CFFE00507FE0 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9C93E38D13942B5A0096FAB3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -190,14 +245,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		9C93E3A413942B5A0096FAB3 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9C93E3A513942B5A0096FAB3 /* en */,
-			);
-			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
 		9C93E3AA13942B5A0096FAB3 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -209,6 +256,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		01E5635215B7CFFE00507FE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HelloSDL/HelloSDL-Prefix.pch";
+				INFOPLIST_FILE = "HelloSDL copy-Info.plist";
+				PRODUCT_NAME = "HelloSDL copy";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		01E5635315B7CFFE00507FE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HelloSDL/HelloSDL-Prefix.pch";
+				INFOPLIST_FILE = "HelloSDL copy-Info.plist";
+				PRODUCT_NAME = "HelloSDL copy";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		9C93E3AD13942B5A0096FAB3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -274,7 +351,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9C93E38B13942B590096FAB3 /* Build configuration list for PBXProject "HelloSDL" */ = {
+		01E5635115B7CFFE00507FE0 /* Build configuration list for PBXNativeTarget "Q-bert" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01E5635215B7CFFE00507FE0 /* Debug */,
+				01E5635315B7CFFE00507FE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9C93E38B13942B590096FAB3 /* Build configuration list for PBXProject "Q-bert" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9C93E3AD13942B5A0096FAB3 /* Debug */,

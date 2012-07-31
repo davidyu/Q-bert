@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>HelloSDL copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>HelloSDL.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>01E5634515B7CFFE00507FE0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9C93E39013942B5A0096FAB3</key>
 		<dict>
 			<key>primary</key>

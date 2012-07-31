@@ -13,9 +13,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9C93E39013942B5A0096FAB3"
-               BuildableName = "HelloSDL.app"
-               BlueprintName = "HelloSDL"
+               BlueprintIdentifier = "01E5634515B7CFFE00507FE0"
+               BuildableName = "HelloSDL copy.app"
+               BlueprintName = "Q-bert"
                ReferencedContainer = "container:Q-bert.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -31,9 +31,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9C93E39013942B5A0096FAB3"
-            BuildableName = "HelloSDL.app"
-            BlueprintName = "HelloSDL"
+            BlueprintIdentifier = "01E5634515B7CFFE00507FE0"
+            BuildableName = "HelloSDL copy.app"
+            BlueprintName = "Q-bert"
             ReferencedContainer = "container:Q-bert.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -49,9 +49,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9C93E39013942B5A0096FAB3"
-            BuildableName = "HelloSDL.app"
-            BlueprintName = "HelloSDL"
+            BlueprintIdentifier = "01E5634515B7CFFE00507FE0"
+            BuildableName = "HelloSDL copy.app"
+            BlueprintName = "Q-bert"
             ReferencedContainer = "container:Q-bert.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -67,9 +67,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9C93E39013942B5A0096FAB3"
-            BuildableName = "HelloSDL.app"
-            BlueprintName = "HelloSDL"
+            BlueprintIdentifier = "01E5634515B7CFFE00507FE0"
+            BuildableName = "HelloSDL copy.app"
+            BlueprintName = "Q-bert"
             ReferencedContainer = "container:Q-bert.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
