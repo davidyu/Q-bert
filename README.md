@@ -1,9 +1,9 @@
 Q-bert
 ======
 
-![Qbberish!](/desktop/Q-bert/raw/master/Screenshots/Qbberish.jpg)
-![Q-bert doing his thing](/desktop/Q-bert/raw/master/Screenshots/basic.jpg)
-![A nice sine wave animation when Q-bert clears all the cubes!](/desktop/Q-bert/raw/master/Screenshots/Sine.jpg)
+![Qbberish!](./Screenshots/Qbberish.jpg)
+![Q-bert doing his thing](./Screenshots/basic.jpg)
+![A nice sine wave animation when Q-bert clears all the cubes!](./master/Screenshots/Sine.jpg)
 
 *A spirited clone of [Q*bert](http://www.youtube.com/watch?v=karPYs22ACc)*
 
